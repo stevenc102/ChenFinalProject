@@ -1,4 +1,5 @@
 import javax.imageio.ImageIO;
+import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.image.BufferedImage;
@@ -97,5 +98,10 @@ public class Player implements KeyListener {
         } else if (temp == KeyEvent.VK_D || temp == KeyEvent.VK_RIGHT) {
             rightPressed = false;
         }
+    }
+
+    public void draw(Graphics2D g2) {
+        BufferedImage image = getImage();
+        g2.drawImage(image, getXPos(), getYPos(), 48, 48, null);
     }
 }

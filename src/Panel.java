@@ -20,6 +20,7 @@ public class Panel extends JPanel implements Runnable {
         this.setBackground(Color.BLACK);
         this.setDoubleBuffered(true);
         this.addKeyListener(player);
+
         this.setFocusable(true);
         startGameThread();
 
@@ -67,16 +68,13 @@ public class Panel extends JPanel implements Runnable {
             }
         }
     }
-//    public void paintComponent(Graphics g) {
-//        super.paintComponent(g);
-//        Graphics2D g2 = (Graphics2D) g;
-//        g2.setColor(Color.WHITE);
-//        g2.fillRect(player.getXPos(), player.getYPos() , 48, 48);
-//        g2.dispose();
-//    }
-
-    public void draw(Graphics2D g2) {
-        BufferedImage image = player.getImage();
-        g2.drawImage(image, player.getXPos(), player.getYPos(), 48, 48, null);
+    public void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        Graphics2D g2 = (Graphics2D) g;
+        this.setBackground(Color.BLACK);
+        player.draw(g2);
+        g2.dispose();
     }
+
+
 }
