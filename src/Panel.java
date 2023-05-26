@@ -11,13 +11,14 @@ public class Panel extends JPanel implements Runnable {
     private final int MAX_SCREEN_ROW = 16;
     private final int SCREEN_WIDTH = TILE_SIZE * MAX_SCREEN_COL;
     private final int SCREEN_LENGTH = TILE_SIZE * MAX_SCREEN_ROW;
+
     private Player player;
 
     private Thread gameThread;
     public Panel() {
         player = new Player();
         this.setPreferredSize(new Dimension(SCREEN_WIDTH, SCREEN_LENGTH));
-        this.setBackground(Color.BLACK);
+        this.setBackground(Color.WHITE);
         this.setDoubleBuffered(true);
         this.addKeyListener(player);
 
@@ -38,7 +39,39 @@ public class Panel extends JPanel implements Runnable {
         }
     }
     public void updatePos() {
-        if (player.getUpPressed()) {
+        if (player.getUpPressed() && player.getLeftPressed()) {
+            player.changeYPos(-1.0 * player.getPlayerSpeed());
+            player.changeXPos(-1.0 * player.getPlayerSpeed());
+            try {
+                Thread.sleep(7);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+        } else if (player.getDownPressed() && player.getLeftPressed()) {
+            player.changeYPos(player.getPlayerSpeed());
+            player.changeXPos(-1.0 * player.getPlayerSpeed());
+            try {
+                Thread.sleep(7);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+        } else if (player.getRightPressed() && player.getUpPressed()) {
+            player.changeXPos(player.getPlayerSpeed());
+            player.changeYPos(-1.0 * player.getPlayerSpeed());
+            try {
+                Thread.sleep(7);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+        } else if (player.getRightPressed() && player.getDownPressed()) {
+            player.changeXPos(player.getPlayerSpeed());
+            player.changeYPos(player.getPlayerSpeed());
+            try {
+                Thread.sleep(7);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+        } else if (player.getUpPressed()) {
             player.changeYPos(-1 * player.getPlayerSpeed());
             try {
                 Thread.sleep(5);
@@ -71,7 +104,7 @@ public class Panel extends JPanel implements Runnable {
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D) g;
-        this.setBackground(Color.BLACK);
+        this.setBackground(Color.WHITE);
         player.draw(g2);
         g2.dispose();
     }
