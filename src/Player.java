@@ -15,6 +15,7 @@ public class Player implements KeyListener {
     private int spriteNum;
     private String direction;
     private int spriteCounter;
+    private int temp;
     public Player()  {
         spriteCounter = 0;
         spriteNum = 1;
@@ -84,7 +85,47 @@ public class Player implements KeyListener {
     }
 
     public BufferedImage getImage() {
-        return img;
+        if (spriteNum == 1) {
+            if (direction.equals("down")) {
+                return down1;
+            }
+            if (direction.equals("up")) {
+                return up1;
+            }
+            if (direction.equals("left")) {
+                return left1;
+            }
+            if (direction.equals("right")) {
+                return right1;
+            }
+        } else if (spriteNum == 2){
+            if (direction.equals("down")) {
+                return down2;
+            }
+            if (direction.equals("up")) {
+                return up2;
+            }
+            if (direction.equals("left")) {
+                return left2;
+            }
+            if (direction.equals("right")) {
+                return right2;
+            }
+        } else {
+            if (direction.equals("down")) {
+                return down3;
+            }
+            if (direction.equals("up")) {
+                return up3;
+            }
+            if (direction.equals("left")) {
+                return left3;
+            }
+            if (direction.equals("right")) {
+                return right3;
+            }
+        }
+        return up1;
     }
 
     @Override
@@ -95,41 +136,81 @@ public class Player implements KeyListener {
     @Override
     public void keyPressed(KeyEvent e) {
         int temp = e.getKeyCode();
+        System.out.println("pressed " + temp);
         if (temp == KeyEvent.VK_W || temp == KeyEvent.VK_UP) {
             upPressed = true;
             direction = "up";
         } else if (temp == KeyEvent.VK_A || temp == KeyEvent.VK_LEFT) {
             leftPressed = true;
+            direction = "left";
         } else if (temp == KeyEvent.VK_S || temp == KeyEvent.VK_DOWN) {
             downPressed = true;
-        } else if (temp == KeyEvent.VK_D || temp == KeyEvent.VK_RIGHT) {
+            direction = "down";
+        } else  {
             rightPressed = true;
             direction = "right";
         }
-
-        spriteCounter++;
-        if (spriteCounter > 5) {
-            if (spriteNum == 1) {
-                spriteNum = 2;
-            } else if (spriteNum == 2) {
-                spriteNum = 3;
-            } else {
-                spriteNum = 1;
-            }
-            spriteCounter = 0;
-        }
     }
 
+    public void update() {
+        if (upPressed || downPressed || rightPressed || leftPressed) {
+            if (upPressed) {
+                changeYPos(-1 * getPlayerSpeed());
+                try {
+                    Thread.sleep(5);
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
+                }
+            } else if (leftPressed) {
+                changeXPos(-1 * getPlayerSpeed());
+                try {
+                    Thread.sleep(5);
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
+                }
+            } else if (downPressed) {
+                changeYPos(getPlayerSpeed());
+                try {
+                    Thread.sleep(5);
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
+                }
+            } else  {
+                changeXPos(getPlayerSpeed());
+                try {
+                    Thread.sleep(5);
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+
+            spriteCounter++;
+            if (spriteCounter > 15) {
+                if (spriteNum == 1) {
+                    spriteNum = 2;
+                } else if (spriteNum == 2) {
+                    spriteNum = 3;
+                } else {
+                    spriteNum = 1;
+                }
+                spriteCounter = 0;
+            }
+        }
+    }
     @Override
     public void keyReleased(KeyEvent e) {
-        int temp = e.getKeyCode();
+        temp = e.getKeyCode();
+        System.out.println("released " + temp);
         if (temp == KeyEvent.VK_W || temp == KeyEvent.VK_UP) {
             upPressed = false;
-        } else if (temp == KeyEvent.VK_A || temp == KeyEvent.VK_LEFT) {
+        }
+        if (temp == KeyEvent.VK_A || temp == KeyEvent.VK_LEFT) {
             leftPressed = false;
-        } else if (temp == KeyEvent.VK_S || temp == KeyEvent.VK_DOWN) {
+        }
+        if (temp == KeyEvent.VK_S || temp == KeyEvent.VK_DOWN) {
             downPressed = false;
-        } else if (temp == KeyEvent.VK_D || temp == KeyEvent.VK_RIGHT) {
+        }
+        if (temp == KeyEvent.VK_D || temp == KeyEvent.VK_RIGHT) {
             rightPressed = false;
         }
     }

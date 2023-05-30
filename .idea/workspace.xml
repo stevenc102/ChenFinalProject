@@ -2,26 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d6512a21-4ed6-4d58-b895-09efb0bec7b8" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Sprites/KoalaBack1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Sprites/KoalaBack2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Sprites/KoalaBack3.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Sprites/KoalaFront1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Sprites/KoalaFront2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Sprites/KoalaFront3.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Sprites/KoalaLeft1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Sprites/KoalaLeft2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Sprites/KoalaLeft3.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Sprites/KoalaRight1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Sprites/KoalaRight2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Sprites/KoalaRight3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Terrain/Sand.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Tile.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/TileManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Frame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Frame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Panel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Panel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Sprites/player.png" beforeDir="false" />
     </list>
-    <list id="bdedde7b-cfda-4003-80d4-a6b754171166" name="Changes by student" comment="">
-      <change beforePath="$PROJECT_DIR$/src/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Player.java" afterDir="false" />
-    </list>
+    <list id="324576a1-374b-4300-b3c1-864135a3528e" name="Changes by student" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -36,26 +26,6 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-  </component>
-  <component name="LineStatusTrackerManager">
-    <file path="$PROJECT_DIR$/src/Player.java">
-      <ranges>
-        <range start1="7" end1="7" start2="7" end2="8" changelist="d6512a21-4ed6-4d58-b895-09efb0bec7b8" />
-        <range start1="11" end1="15" start2="12" end2="17" changelist="d6512a21-4ed6-4d58-b895-09efb0bec7b8" />
-        <range start1="16" end1="16" start2="18" end2="21" changelist="d6512a21-4ed6-4d58-b895-09efb0bec7b8" />
-        <range start1="37" end1="38" start2="42" end2="43" changelist="d6512a21-4ed6-4d58-b895-09efb0bec7b8" />
-        <range start1="54" end1="55" start2="59" end2="60" changelist="d6512a21-4ed6-4d58-b895-09efb0bec7b8" />
-        <range start1="57" end1="58" start2="62" end2="63" changelist="d6512a21-4ed6-4d58-b895-09efb0bec7b8" />
-        <range start1="62" end1="63" start2="67" end2="83" changelist="d6512a21-4ed6-4d58-b895-09efb0bec7b8" />
-        <range start1="66" end1="67" start2="86" end2="118" changelist="bdedde7b-cfda-4003-80d4-a6b754171166" />
-        <range start1="79" end1="79" start2="130" end2="131" changelist="d6512a21-4ed6-4d58-b895-09efb0bec7b8" />
-        <range start1="81" end1="82" start2="133" end2="135" changelist="bdedde7b-cfda-4003-80d4-a6b754171166" />
-        <range start1="83" end1="83" start2="136" end2="137" changelist="bdedde7b-cfda-4003-80d4-a6b754171166" />
-        <range start1="85" end1="85" start2="139" end2="140" changelist="d6512a21-4ed6-4d58-b895-09efb0bec7b8" />
-        <range start1="86" end1="86" start2="141" end2="153" changelist="d6512a21-4ed6-4d58-b895-09efb0bec7b8" />
-        <range start1="106" end1="106" start2="173" end2="175" changelist="d6512a21-4ed6-4d58-b895-09efb0bec7b8" />
-      </ranges>
-    </file>
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -84,6 +54,7 @@
       <recent name="C:\Users\student\IdeaProjects\ChenFinalProject\src\Sprites" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\student\IdeaProjects\ChenFinalProject\src\Terrain" />
       <recent name="C:\Users\student\IdeaProjects\ChenFinalProject\src\Sprites" />
     </key>
   </component>

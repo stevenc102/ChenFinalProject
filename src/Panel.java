@@ -1,6 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
+import java.io.IOException;
 
 public class Panel extends JPanel implements Runnable {
     private final int SIZE = 16;
@@ -13,9 +14,11 @@ public class Panel extends JPanel implements Runnable {
     private final int SCREEN_LENGTH = TILE_SIZE * MAX_SCREEN_ROW;
 
     private Player player;
+    private TileManager tileManager;
 
     private Thread gameThread;
-    public Panel() {
+    public Panel() throws IOException {
+        tileManager = new TileManager();
         player = new Player();
         this.setPreferredSize(new Dimension(SCREEN_WIDTH, SCREEN_LENGTH));
         this.setBackground(Color.WHITE);
@@ -35,77 +38,20 @@ public class Panel extends JPanel implements Runnable {
     public void run() {
         while(gameThread != null) {
             repaint();
-            updatePos();
-        }
-    }
-    public void updatePos() {
-        if (player.getUpPressed() && player.getLeftPressed()) {
-            player.changeYPos(-1.0 * player.getPlayerSpeed());
-            player.changeXPos(-1.0 * player.getPlayerSpeed());
-            try {
-                Thread.sleep(7);
-            } catch (InterruptedException e) {
-                throw new RuntimeException(e);
-            }
-        } else if (player.getDownPressed() && player.getLeftPressed()) {
-            player.changeYPos(player.getPlayerSpeed());
-            player.changeXPos(-1.0 * player.getPlayerSpeed());
-            try {
-                Thread.sleep(7);
-            } catch (InterruptedException e) {
-                throw new RuntimeException(e);
-            }
-        } else if (player.getRightPressed() && player.getUpPressed()) {
-            player.changeXPos(player.getPlayerSpeed());
-            player.changeYPos(-1.0 * player.getPlayerSpeed());
-            try {
-                Thread.sleep(7);
-            } catch (InterruptedException e) {
-                throw new RuntimeException(e);
-            }
-        } else if (player.getRightPressed() && player.getDownPressed()) {
-            player.changeXPos(player.getPlayerSpeed());
-            player.changeYPos(player.getPlayerSpeed());
-            try {
-                Thread.sleep(7);
-            } catch (InterruptedException e) {
-                throw new RuntimeException(e);
-            }
-        } else if (player.getUpPressed()) {
-            player.changeYPos(-1 * player.getPlayerSpeed());
-            try {
-                Thread.sleep(5);
-            } catch (InterruptedException e) {
-                throw new RuntimeException(e);
-            }
-        } else if (player.getDownPressed()) {
-            player.changeYPos(player.getPlayerSpeed());
-            try {
-                Thread.sleep(5);
-            } catch (InterruptedException e) {
-                throw new RuntimeException(e);
-            }
-        } else if (player.getRightPressed()) {
-            player.changeXPos(player.getPlayerSpeed());
-            try {
-                Thread.sleep(5);
-            } catch (InterruptedException e) {
-                throw new RuntimeException(e);
-            }
-        } else if (player.getLeftPressed()) {
-            player.changeXPos(-1 * player.getPlayerSpeed());
-            try {
-                Thread.sleep(5);
-            } catch (InterruptedException e) {
-                throw new RuntimeException(e);
-            }
+            player.update();
         }
     }
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D) g;
         this.setBackground(Color.WHITE);
+        try {
+            tileManager.draw(g2);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
         player.draw(g2);
+
         g2.dispose();
     }
 
