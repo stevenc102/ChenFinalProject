@@ -5,17 +5,73 @@ import java.io.IOException;
 public class TileManager {
 
     private Tile[][] tiles;
+    private int[][] map = {{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+                           {0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0},
+                           {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 0, 2, 0, 0, 0},
+                           {0, 0, 2, 0, 0, 0, 0, 4, 0, 0, 0, 0, 0, 0, 0, 0},
+                           {0, 0, 0, 1, 4, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0},
+                           {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+                           {0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 0, 0, 0, 0, 0, 0},
+                           {0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0},
+                           {0, 0, 0, 0, 1, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0, 0},
+                           {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0},
+                           {0, 0, 4, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+                           {0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0},
+                           {0, 0, 1, 0, 0, 0, 3, 8, 8, 5, 0, 0, 1, 0, 0, 0},
+                           {0, 0, 0, 0, 0, 3, 3, 3, 3, 7, 6, 5, 0, 0, 0, 0},
+                           {0, 0, 0, 0, 3, 3, 3, 3, 3, 3, 3, 3, 6, 0, 0, 0},
+                           {0, 2, 0, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 0, 0, 0}};
+    private Tile sand1, sand2, sandRock, water, palmTree, waterCornerIn, waterCornerOut, waterCornerConnect, waterFlat;
 
     public TileManager() throws IOException {
         tiles = new Tile[16][16];
+        sand1 = new Tile(ImageIO.read(getClass().getResourceAsStream("/Terrain/Sand.png")), false);
+        sand2 = new Tile(ImageIO.read(getClass().getResourceAsStream("/Terrain/Sand2.png")), false);
+        sandRock = new Tile(ImageIO.read(getClass().getResourceAsStream("/Terrain/Sand_Rock.png")), true);
+        water = new Tile(ImageIO.read(getClass().getResourceAsStream("/Terrain/Water.png")), true);
+        palmTree = new Tile(ImageIO.read(getClass().getResourceAsStream("/Terrain/Palm_Tree.png")), true);
+        waterCornerIn = new Tile(ImageIO.read(getClass().getResourceAsStream("/Terrain/Water_Corner_In.png")), true);
+        waterCornerOut = new Tile(ImageIO.read(getClass().getResourceAsStream("/Terrain/Water_Corner_Out.png")), true);
+        waterCornerConnect = new Tile(ImageIO.read(getClass().getResourceAsStream("/Terrain/Water_Corner_Connect.png")), true);
+        waterFlat = new Tile(ImageIO.read(getClass().getResourceAsStream("/Terrain/Water_Flat.png")), true);
+        initTiles();
     }
 
     public void initTiles() throws IOException {
-
+        for (int i = 0; i < map.length; i++) {
+            for (int j = 0; j < map[i].length; j++) {
+                if (map[i][j] == 0) {
+                    tiles[i][j] = sand1;
+                } else if (map[i][j] == 1) {
+                    tiles[i][j] = sand2;
+                } else if (map[i][j] == 2) {
+                    tiles[i][j] = sandRock;
+                } else if (map[i][j] == 3) {
+                    tiles[i][j] = water;
+                } else if (map[i][j] == 4) {
+                    tiles[i][j] = palmTree;
+                } else if (map[i][j] == 5){
+                    tiles[i][j] = waterCornerIn;
+                } else if (map[i][j] == 6){
+                    tiles[i][j] = waterCornerOut;
+                } else if (map[i][j] == 7){
+                    tiles[i][j] = waterCornerConnect;
+                } else if (map[i][j] == 8){
+                    tiles[i][j] = waterFlat;
+                }
+            }
+        }
     }
 
     public void draw(Graphics2D g2) throws IOException {
-        tiles[0][0] = new Tile(ImageIO.read(getClass().getResourceAsStream("/Terrain/Sand.png")));
-        g2.drawImage(tiles[0][0].getImage(), 0, 0, 48, 48, null);
+        int val = 0;
+        for (int i = 0; i < Panel.MAX_SCREEN_ROW; i++) {
+            int val2 = 0;
+            for (int j = 0; j < Panel.MAX_SCREEN_COL; j++){
+                g2.drawImage(tiles[i][j].getImage(), val2, val, Panel.TILE_SIZE, Panel.TILE_SIZE, null);
+                val2 += Panel.TILE_SIZE;
+            }
+            val += Panel.TILE_SIZE;
+        }
     }
 }

@@ -4,14 +4,14 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 
 public class Panel extends JPanel implements Runnable {
-    private final int SIZE = 16;
-    private final int SCALE = 3;
+    public static final int SIZE = 16;
+    public static final int SCALE = 3;
 
-    private final int TILE_SIZE = SIZE * SCALE;
-    private final int MAX_SCREEN_COL = 16;
-    private final int MAX_SCREEN_ROW = 16;
-    private final int SCREEN_WIDTH = TILE_SIZE * MAX_SCREEN_COL;
-    private final int SCREEN_LENGTH = TILE_SIZE * MAX_SCREEN_ROW;
+    public static final int TILE_SIZE = SIZE * SCALE;
+    public static final int MAX_SCREEN_COL = 16;
+    public static final int MAX_SCREEN_ROW = 16;
+    public static final int SCREEN_WIDTH = TILE_SIZE * MAX_SCREEN_COL;
+    public static final int SCREEN_LENGTH = TILE_SIZE * MAX_SCREEN_ROW;
 
     private Player player;
     private TileManager tileManager;

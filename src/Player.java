@@ -16,6 +16,7 @@ public class Player implements KeyListener {
     private String direction;
     private int spriteCounter;
     private int temp;
+    private Rectangle hitBox;
     public Player()  {
         spriteCounter = 0;
         spriteNum = 1;
@@ -27,6 +28,7 @@ public class Player implements KeyListener {
         downPressed = false;
         leftPressed = false;
         rightPressed = false;
+        hitBox = new Rectangle(xPos, yPos , 23, 24);
         try {
             getPlayerImage();
         } catch (IOException e) {
@@ -196,6 +198,7 @@ public class Player implements KeyListener {
                 spriteCounter = 0;
             }
         }
+        hitBox.setLocation(xPos + 13, yPos + 24);
     }
     @Override
     public void keyReleased(KeyEvent e) {

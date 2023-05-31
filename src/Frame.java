@@ -9,7 +9,7 @@ public class Frame extends JFrame {
         frame = new JFrame();
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(768,768);
-        this.setResizable(false);
+        frame.setResizable(false);
         frame.setTitle("aaaaaaaaa");
         frame.add(panel);
         frame.setVisible(true);
