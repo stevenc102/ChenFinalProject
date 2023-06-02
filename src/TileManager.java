@@ -25,15 +25,15 @@ public class TileManager {
 
     public TileManager() throws IOException {
         tiles = new Tile[16][16];
-        sand1 = new Tile(ImageIO.read(getClass().getResourceAsStream("/Terrain/Sand.png")), false, 0, 0);
-        sand2 = new Tile(ImageIO.read(getClass().getResourceAsStream("/Terrain/Sand2.png")), false,0, 0);
-        sandRock = new Tile(ImageIO.read(getClass().getResourceAsStream("/Terrain/Sand_Rock.png")), true, 0, 0);
-        water = new Tile(ImageIO.read(getClass().getResourceAsStream("/Terrain/Water.png")), true, 0, 0);
-        palmTree = new Tile(ImageIO.read(getClass().getResourceAsStream("/Terrain/Palm_Tree.png")), true, 0, 0);
-        waterCornerIn = new Tile(ImageIO.read(getClass().getResourceAsStream("/Terrain/Water_Corner_In.png")), true, 0, 0);
-        waterCornerOut = new Tile(ImageIO.read(getClass().getResourceAsStream("/Terrain/Water_Corner_Out.png")), true, 0, 0);
-        waterCornerConnect = new Tile(ImageIO.read(getClass().getResourceAsStream("/Terrain/Water_Corner_Connect.png")), true, 0, 0);
-        waterFlat = new Tile(ImageIO.read(getClass().getResourceAsStream("/Terrain/Water_Flat.png")), true, 0, 0);
+        sand1 = new Tile("sand1", ImageIO.read(getClass().getResourceAsStream("/Terrain/Sand.png")), false, 0, 0);
+        sand2 = new Tile("sand2",ImageIO.read(getClass().getResourceAsStream("/Terrain/Sand2.png")), false,0, 0);
+        sandRock = new Tile("sandRock",ImageIO.read(getClass().getResourceAsStream("/Terrain/Sand_Rock.png")), true, 0, 0);
+        water = new Tile("water",ImageIO.read(getClass().getResourceAsStream("/Terrain/Water.png")), true, 0, 0);
+        palmTree = new Tile("palmTree", ImageIO.read(getClass().getResourceAsStream("/Terrain/Palm_Tree.png")), true, 0, 0);
+        waterCornerIn = new Tile("waterCornerIn",ImageIO.read(getClass().getResourceAsStream("/Terrain/Water_Corner_In.png")), true, 0, 0);
+        waterCornerOut = new Tile("waterCornerOut",ImageIO.read(getClass().getResourceAsStream("/Terrain/Water_Corner_Out.png")), true, 0, 0);
+        waterCornerConnect = new Tile("waterCornerConnect",ImageIO.read(getClass().getResourceAsStream("/Terrain/Water_Corner_Connect.png")), true, 0, 0);
+        waterFlat = new Tile("waterFlat",ImageIO.read(getClass().getResourceAsStream("/Terrain/Water_Flat.png")), true, 0, 0);
         initTiles();
     }
 

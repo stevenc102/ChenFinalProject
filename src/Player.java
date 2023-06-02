@@ -154,7 +154,6 @@ public class Player implements KeyListener {
     @Override
     public void keyPressed(KeyEvent e) {
         int temp = e.getKeyCode();
-        System.out.println("pressed " + temp);
         if (temp == KeyEvent.VK_W || temp == KeyEvent.VK_UP) {
             upPressed = true;
             direction = "up";
@@ -196,7 +195,7 @@ public class Player implements KeyListener {
                     } catch (InterruptedException e) {
                         throw new RuntimeException(e);
                     }
-                } else  {
+                } else {
                     changeXPos(getPlayerSpeed());
                     try {
                         Thread.sleep(5);
@@ -204,17 +203,18 @@ public class Player implements KeyListener {
                         throw new RuntimeException(e);
                     }
                 }
-            }
-            spriteCounter++;
-            if (spriteCounter > 15) {
-                if (spriteNum == 1) {
-                    spriteNum = 2;
-                } else if (spriteNum == 2) {
-                    spriteNum = 3;
-                } else {
-                    spriteNum = 1;
+
+                spriteCounter++;
+                if (spriteCounter > 15) {
+                    if (spriteNum == 1) {
+                        spriteNum = 2;
+                    } else if (spriteNum == 2) {
+                        spriteNum = 3;
+                    } else {
+                        spriteNum = 1;
+                    }
+                    spriteCounter = 0;
                 }
-                spriteCounter = 0;
             }
         }
         hitBox.setLocation(xPos + 13, yPos + 24);
@@ -222,7 +222,6 @@ public class Player implements KeyListener {
     @Override
     public void keyReleased(KeyEvent e) {
         temp = e.getKeyCode();
-        System.out.println("released " + temp);
         if (temp == KeyEvent.VK_W || temp == KeyEvent.VK_UP) {
             upPressed = false;
         }
