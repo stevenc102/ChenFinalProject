@@ -11,13 +11,17 @@ public class Player implements KeyListener {
     private boolean upPressed, downPressed, leftPressed, rightPressed;
 
     private BufferedImage up1, up2, up3, down1, down2, down3, left1, left2, left3, right1, right2, right3;
-    private double playerSpeed;
+    private int playerSpeed;
     private int spriteNum;
     private String direction;
     private int spriteCounter;
+    private boolean isColliding;
+    private CollisionManager cm;
     private int temp;
     private Rectangle hitBox;
     public Player()  {
+        cm = new CollisionManager();
+        isColliding = false;
         spriteCounter = 0;
         spriteNum = 1;
         direction = "down";
@@ -43,8 +47,12 @@ public class Player implements KeyListener {
     public int getYPos() {
         return yPos;
     }
-    public double getPlayerSpeed() {
+    public int getPlayerSpeed() {
         return playerSpeed;
+    }
+
+    public String getDirection() {
+        return direction;
     }
     public boolean getUpPressed() {
         return upPressed;
@@ -84,6 +92,14 @@ public class Player implements KeyListener {
         }catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public Rectangle getHitBox() {
+        return hitBox;
+    }
+
+    public void setIsColliding(boolean b) {
+        isColliding = b;
     }
 
     public BufferedImage getImage() {
@@ -156,36 +172,39 @@ public class Player implements KeyListener {
 
     public void update() {
         if (upPressed || downPressed || rightPressed || leftPressed) {
-            if (upPressed) {
-                changeYPos(-1 * getPlayerSpeed());
-                try {
-                    Thread.sleep(5);
-                } catch (InterruptedException e) {
-                    throw new RuntimeException(e);
-                }
-            } else if (leftPressed) {
-                changeXPos(-1 * getPlayerSpeed());
-                try {
-                    Thread.sleep(5);
-                } catch (InterruptedException e) {
-                    throw new RuntimeException(e);
-                }
-            } else if (downPressed) {
-                changeYPos(getPlayerSpeed());
-                try {
-                    Thread.sleep(5);
-                } catch (InterruptedException e) {
-                    throw new RuntimeException(e);
-                }
-            } else  {
-                changeXPos(getPlayerSpeed());
-                try {
-                    Thread.sleep(5);
-                } catch (InterruptedException e) {
-                    throw new RuntimeException(e);
+            isColliding = false;
+            cm.checkCollision(this);
+            if (!isColliding) {
+                if (upPressed) {
+                    changeYPos(-1 * getPlayerSpeed());
+                    try {
+                        Thread.sleep(5);
+                    } catch (InterruptedException e) {
+                        throw new RuntimeException(e);
+                    }
+                } else if (leftPressed) {
+                    changeXPos(-1 * getPlayerSpeed());
+                    try {
+                        Thread.sleep(5);
+                    } catch (InterruptedException e) {
+                        throw new RuntimeException(e);
+                    }
+                } else if (downPressed) {
+                    changeYPos(getPlayerSpeed());
+                    try {
+                        Thread.sleep(5);
+                    } catch (InterruptedException e) {
+                        throw new RuntimeException(e);
+                    }
+                } else  {
+                    changeXPos(getPlayerSpeed());
+                    try {
+                        Thread.sleep(5);
+                    } catch (InterruptedException e) {
+                        throw new RuntimeException(e);
+                    }
                 }
             }
-
             spriteCounter++;
             if (spriteCounter > 15) {
                 if (spriteNum == 1) {

@@ -4,8 +4,8 @@ import java.io.IOException;
 
 public class TileManager {
 
-    private Tile[][] tiles;
-    private int[][] map = {{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+    public static Tile[][] tiles;
+    public static int[][] map = {{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
                            {0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0},
                            {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 0, 2, 0, 0, 0},
                            {0, 0, 2, 0, 0, 0, 0, 4, 0, 0, 0, 0, 0, 0, 0, 0},
@@ -25,15 +25,15 @@ public class TileManager {
 
     public TileManager() throws IOException {
         tiles = new Tile[16][16];
-        sand1 = new Tile(ImageIO.read(getClass().getResourceAsStream("/Terrain/Sand.png")), false);
-        sand2 = new Tile(ImageIO.read(getClass().getResourceAsStream("/Terrain/Sand2.png")), false);
-        sandRock = new Tile(ImageIO.read(getClass().getResourceAsStream("/Terrain/Sand_Rock.png")), true);
-        water = new Tile(ImageIO.read(getClass().getResourceAsStream("/Terrain/Water.png")), true);
-        palmTree = new Tile(ImageIO.read(getClass().getResourceAsStream("/Terrain/Palm_Tree.png")), true);
-        waterCornerIn = new Tile(ImageIO.read(getClass().getResourceAsStream("/Terrain/Water_Corner_In.png")), true);
-        waterCornerOut = new Tile(ImageIO.read(getClass().getResourceAsStream("/Terrain/Water_Corner_Out.png")), true);
-        waterCornerConnect = new Tile(ImageIO.read(getClass().getResourceAsStream("/Terrain/Water_Corner_Connect.png")), true);
-        waterFlat = new Tile(ImageIO.read(getClass().getResourceAsStream("/Terrain/Water_Flat.png")), true);
+        sand1 = new Tile(ImageIO.read(getClass().getResourceAsStream("/Terrain/Sand.png")), false, 0, 0);
+        sand2 = new Tile(ImageIO.read(getClass().getResourceAsStream("/Terrain/Sand2.png")), false,0, 0);
+        sandRock = new Tile(ImageIO.read(getClass().getResourceAsStream("/Terrain/Sand_Rock.png")), true, 0, 0);
+        water = new Tile(ImageIO.read(getClass().getResourceAsStream("/Terrain/Water.png")), true, 0, 0);
+        palmTree = new Tile(ImageIO.read(getClass().getResourceAsStream("/Terrain/Palm_Tree.png")), true, 0, 0);
+        waterCornerIn = new Tile(ImageIO.read(getClass().getResourceAsStream("/Terrain/Water_Corner_In.png")), true, 0, 0);
+        waterCornerOut = new Tile(ImageIO.read(getClass().getResourceAsStream("/Terrain/Water_Corner_Out.png")), true, 0, 0);
+        waterCornerConnect = new Tile(ImageIO.read(getClass().getResourceAsStream("/Terrain/Water_Corner_Connect.png")), true, 0, 0);
+        waterFlat = new Tile(ImageIO.read(getClass().getResourceAsStream("/Terrain/Water_Flat.png")), true, 0, 0);
         initTiles();
     }
 
@@ -63,11 +63,17 @@ public class TileManager {
         }
     }
 
+    public Tile[][] getTiles()
+    {
+        return tiles;
+    }
     public void draw(Graphics2D g2) throws IOException {
         int val = 0;
         for (int i = 0; i < Panel.MAX_SCREEN_ROW; i++) {
             int val2 = 0;
             for (int j = 0; j < Panel.MAX_SCREEN_COL; j++){
+                tiles[i][j].setX(val2);
+                tiles[i][j].setY(val);
                 g2.drawImage(tiles[i][j].getImage(), val2, val, Panel.TILE_SIZE, Panel.TILE_SIZE, null);
                 val2 += Panel.TILE_SIZE;
             }
