@@ -17,11 +17,12 @@ public class TileManager {
                            {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0},
                            {0, 0, 4, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0},
                            {0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0},
-                           {0, 0, 1, 0, 0, 0, 3, 8, 8, 5, 0, 0, 1, 0, 0, 0},
-                           {0, 0, 0, 0, 0, 3, 3, 3, 3, 7, 6, 5, 0, 0, 0, 0},
-                           {0, 0, 0, 0, 3, 3, 3, 3, 3, 3, 3, 3, 6, 0, 0, 0},
-                           {0, 2, 0, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 0, 0, 0}};
-    private Tile sand1, sand2, sandRock, water, palmTree, waterCornerIn, waterCornerOut, waterCornerConnect, waterFlat;
+                           {0, 0, 1, 0, 0, 10, 8, 8, 8, 5, 0, 0, 1, 0, 0, 0},
+                           {14, 14, 14, 14, 11, 12, 3, 3, 3, 7, 6, 9, 9, 9, 9, 9},
+                           {3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3},
+                           {3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3}};
+    private Tile sand1, sand2, sandRock, water, palmTree, waterCornerIn, waterCornerInFlipped, waterCornerOut, waterCornerOutFlipped, waterCornerConnect, waterCornerConnectFlipped, waterFlat, waterFlatFlipped,
+                 waterFlat2, waterFlat2Flipped;
 
     public TileManager() throws IOException {
         tiles = new Tile[16][16];
@@ -37,7 +38,7 @@ public class TileManager {
         initTiles();
     }
 
-    public void initTiles() throws IOException {
+    public void initTiles() {
         for (int i = 0; i < map.length; i++) {
             for (int j = 0; j < map[i].length; j++) {
                 if (map[i][j] == 0) {
@@ -61,11 +62,6 @@ public class TileManager {
                 }
             }
         }
-    }
-
-    public Tile[][] getTiles()
-    {
-        return tiles;
     }
     public void draw(Graphics2D g2) throws IOException {
         int val = 0;

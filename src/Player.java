@@ -175,28 +175,36 @@ public class Player implements KeyListener {
             cm.checkCollision(this);
             if (!isColliding) {
                 if (upPressed) {
-                    changeYPos(-1 * getPlayerSpeed());
+                    if (yPos - playerSpeed > 3) {
+                        changeYPos(-1 * getPlayerSpeed());
+                    }
                     try {
                         Thread.sleep(5);
                     } catch (InterruptedException e) {
                         throw new RuntimeException(e);
                     }
                 } else if (leftPressed) {
-                    changeXPos(-1 * getPlayerSpeed());
+                    if (xPos - playerSpeed > 3) {
+                        changeXPos(-1 * getPlayerSpeed());
+                    }
                     try {
                         Thread.sleep(5);
                     } catch (InterruptedException e) {
                         throw new RuntimeException(e);
                     }
                 } else if (downPressed) {
-                    changeYPos(getPlayerSpeed());
+                    if (yPos + playerSpeed < 700) {
+                        changeYPos(getPlayerSpeed());
+                    }
                     try {
                         Thread.sleep(5);
                     } catch (InterruptedException e) {
                         throw new RuntimeException(e);
                     }
-                } else {
-                    changeXPos(getPlayerSpeed());
+                } else if (rightPressed) {
+                    if (xPos + playerSpeed < 700) {
+                        changeXPos(getPlayerSpeed());
+                    }
                     try {
                         Thread.sleep(5);
                     } catch (InterruptedException e) {
