@@ -12,6 +12,10 @@ public class Panel extends JPanel implements Runnable {
     public static final int MAX_SCREEN_ROW = 16;
     public static final int SCREEN_WIDTH = TILE_SIZE * MAX_SCREEN_COL;
     public static final int SCREEN_LENGTH = TILE_SIZE * MAX_SCREEN_ROW;
+    public static final int MAX_WORLD_COL = 48;
+    public static final int MAX_WORLD_ROW = 48;
+    public static final int MAX_WORLD_HEIGHT = TILE_SIZE * MAX_WORLD_ROW;
+    public static final int MAX_WORLD_LENGTH = TILE_SIZE * MAX_WORLD_COL;
 
     private Player player;
     private TileManager tileManager;

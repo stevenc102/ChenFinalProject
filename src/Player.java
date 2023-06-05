@@ -7,7 +7,8 @@ import java.io.IOException;
 
 
 public class Player implements KeyListener {
-    private int xPos, yPos;
+    private int worldXPos, worldYPos;
+    private final int screenX, screenY;
     private boolean upPressed, downPressed, leftPressed, rightPressed;
 
     private BufferedImage up1, up2, up3, down1, down2, down3, left1, left2, left3, right1, right2, right3;
@@ -20,19 +21,21 @@ public class Player implements KeyListener {
     private int temp;
     private Rectangle hitBox;
     public Player()  {
+        screenX = Panel.SCREEN_LENGTH / 2 - (Panel.TILE_SIZE );
+        screenY = Panel.SCREEN_WIDTH / 2 - (Panel.TILE_SIZE);
         cm = new CollisionManager();
         isColliding = false;
         spriteCounter = 0;
         spriteNum = 1;
         direction = "down";
         playerSpeed = 2;
-        xPos = 100;
-        yPos = 100;
+        worldXPos = 100;
+        worldYPos = 100;
         upPressed = false;
         downPressed = false;
         leftPressed = false;
         rightPressed = false;
-        hitBox = new Rectangle(xPos, yPos , 23, 24);
+        hitBox = new Rectangle(worldXPos, worldYPos , 23, 24);
         try {
             getPlayerImage();
         } catch (IOException e) {
@@ -41,11 +44,11 @@ public class Player implements KeyListener {
     }
 
     public int getXPos() {
-        return xPos;
+        return worldXPos;
     }
 
     public int getYPos() {
-        return yPos;
+        return worldYPos;
     }
     public int getPlayerSpeed() {
         return playerSpeed;
@@ -69,10 +72,10 @@ public class Player implements KeyListener {
     }
 
     public void changeYPos(double a) {
-        yPos += a;
+        worldYPos += a;
     }
     public void changeXPos(double a) {
-        xPos += a;
+        worldXPos += a;
     }
 
     public void getPlayerImage() throws IOException {
@@ -175,7 +178,7 @@ public class Player implements KeyListener {
             cm.checkCollision(this);
             if (!isColliding) {
                 if (upPressed) {
-                    if (yPos - playerSpeed > 3) {
+                    if (worldYPos - playerSpeed > 3) {
                         changeYPos(-1 * getPlayerSpeed());
                     }
                     try {
@@ -184,7 +187,7 @@ public class Player implements KeyListener {
                         throw new RuntimeException(e);
                     }
                 } else if (leftPressed) {
-                    if (xPos - playerSpeed > 3) {
+                    if (worldXPos - playerSpeed > 3) {
                         changeXPos(-1 * getPlayerSpeed());
                     }
                     try {
@@ -193,7 +196,7 @@ public class Player implements KeyListener {
                         throw new RuntimeException(e);
                     }
                 } else if (downPressed) {
-                    if (yPos + playerSpeed < 700) {
+                    if (worldYPos + playerSpeed < 700) {
                         changeYPos(getPlayerSpeed());
                     }
                     try {
@@ -202,7 +205,7 @@ public class Player implements KeyListener {
                         throw new RuntimeException(e);
                     }
                 } else if (rightPressed) {
-                    if (xPos + playerSpeed < 700) {
+                    if (worldXPos + playerSpeed < 700) {
                         changeXPos(getPlayerSpeed());
                     }
                     try {
@@ -225,7 +228,7 @@ public class Player implements KeyListener {
                 }
             }
         }
-        hitBox.setLocation(xPos + 13, yPos + 24);
+        hitBox.setLocation(worldXPos + 13, worldYPos + 24);
     }
     @Override
     public void keyReleased(KeyEvent e) {
@@ -246,7 +249,7 @@ public class Player implements KeyListener {
 
     public void draw(Graphics2D g2) {
         BufferedImage image = getImage();
-        g2.drawImage(image, getXPos(), getYPos(), 48, 48, null);
+        g2.drawImage(image, screenX, screenY, 48, 48, null);
     }
 
 
