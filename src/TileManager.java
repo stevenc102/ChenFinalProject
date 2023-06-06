@@ -1,6 +1,9 @@
 import javax.imageio.ImageIO;
 import java.awt.*;
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 
 public class TileManager {
 
@@ -18,8 +21,11 @@ public class TileManager {
         water = new Tile("water",ImageIO.read(getClass().getResourceAsStream("/Terrain/Water.png")), true, 0, 0);
         palmTree = new Tile("palmTree", ImageIO.read(getClass().getResourceAsStream("/Terrain/Palm_Tree.png")), true, 0, 0);
         waterCornerIn = new Tile("waterCornerIn",ImageIO.read(getClass().getResourceAsStream("/Terrain/Water_Corner_In.png")), true, 0, 0);
+        waterCornerInFlipped = new Tile("waterCornerInFlipped",ImageIO.read(getClass().getResourceAsStream("/Terrain/Water_Corner_In_Flipped.png")), true, 0, 0);
         waterCornerOut = new Tile("waterCornerOut",ImageIO.read(getClass().getResourceAsStream("/Terrain/Water_Corner_Out.png")), true, 0, 0);
+        waterCornerOutFlipped = new Tile("waterCornerOutFlipped",ImageIO.read(getClass().getResourceAsStream("/Terrain/Water_Corner_Out_Flipped.png")), true, 0, 0);
         waterCornerConnect = new Tile("waterCornerConnect",ImageIO.read(getClass().getResourceAsStream("/Terrain/Water_Corner_Connect.png")), true, 0, 0);
+        waterCornerConnectFlipped = new Tile("waterCornerConnectFlipped",ImageIO.read(getClass().getResourceAsStream("/Terrain/Water_Corner_Connect_Flipped.png")), true, 0, 0);
         waterFlat = new Tile("waterFlat",ImageIO.read(getClass().getResourceAsStream("/Terrain/Water_Flat.png")), true, 0, 0);
         waterFlatFlipped = new Tile("waterFlatFlipped",ImageIO.read(getClass().getResourceAsStream("/Terrain/Water_Flat_Flipped.png")), true, 0, 0);
         waterFlat2 = new Tile("waterFlat2",ImageIO.read(getClass().getResourceAsStream("/Terrain/Water_Flat2.png")), true, 0, 0);
