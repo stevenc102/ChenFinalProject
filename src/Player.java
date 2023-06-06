@@ -7,8 +7,8 @@ import java.io.IOException;
 
 
 public class Player implements KeyListener {
-    private int worldXPos, worldYPos;
-    private final int screenX, screenY;
+    public static int worldXPos, worldYPos;
+    public static final int screenX = Panel.SCREEN_LENGTH / 2 - (Panel.TILE_SIZE), screenY = Panel.SCREEN_WIDTH / 2 - (Panel.TILE_SIZE);
     private boolean upPressed, downPressed, leftPressed, rightPressed;
 
     private BufferedImage up1, up2, up3, down1, down2, down3, left1, left2, left3, right1, right2, right3;
@@ -21,21 +21,19 @@ public class Player implements KeyListener {
     private int temp;
     private Rectangle hitBox;
     public Player()  {
-        screenX = Panel.SCREEN_LENGTH / 2 - (Panel.TILE_SIZE );
-        screenY = Panel.SCREEN_WIDTH / 2 - (Panel.TILE_SIZE);
         cm = new CollisionManager();
         isColliding = false;
         spriteCounter = 0;
         spriteNum = 1;
         direction = "down";
         playerSpeed = 2;
-        worldXPos = 100;
-        worldYPos = 100;
+        worldXPos = 1152;
+        worldYPos = 1152;
         upPressed = false;
         downPressed = false;
         leftPressed = false;
         rightPressed = false;
-        hitBox = new Rectangle(worldXPos, worldYPos , 23, 24);
+        hitBox = new Rectangle((int) worldXPos, (int) worldYPos, 23, 24);
         try {
             getPlayerImage();
         } catch (IOException e) {
@@ -43,11 +41,11 @@ public class Player implements KeyListener {
         }
     }
 
-    public int getXPos() {
+    public double getXPos() {
         return worldXPos;
     }
 
-    public int getYPos() {
+    public double getYPos() {
         return worldYPos;
     }
     public int getPlayerSpeed() {
@@ -178,36 +176,28 @@ public class Player implements KeyListener {
             cm.checkCollision(this);
             if (!isColliding) {
                 if (upPressed) {
-                    if (worldYPos - playerSpeed > 3) {
                         changeYPos(-1 * getPlayerSpeed());
-                    }
                     try {
                         Thread.sleep(5);
                     } catch (InterruptedException e) {
                         throw new RuntimeException(e);
                     }
                 } else if (leftPressed) {
-                    if (worldXPos - playerSpeed > 3) {
                         changeXPos(-1 * getPlayerSpeed());
-                    }
                     try {
                         Thread.sleep(5);
                     } catch (InterruptedException e) {
                         throw new RuntimeException(e);
                     }
                 } else if (downPressed) {
-                    if (worldYPos + playerSpeed < 700) {
                         changeYPos(getPlayerSpeed());
-                    }
                     try {
                         Thread.sleep(5);
                     } catch (InterruptedException e) {
                         throw new RuntimeException(e);
                     }
                 } else if (rightPressed) {
-                    if (worldXPos + playerSpeed < 700) {
                         changeXPos(getPlayerSpeed());
-                    }
                     try {
                         Thread.sleep(5);
                     } catch (InterruptedException e) {
@@ -228,7 +218,7 @@ public class Player implements KeyListener {
                 }
             }
         }
-        hitBox.setLocation(worldXPos + 13, worldYPos + 24);
+        hitBox.setLocation((int) (screenX + 13), (int) (screenY + 24));
     }
     @Override
     public void keyReleased(KeyEvent e) {

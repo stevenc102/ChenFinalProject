@@ -7,9 +7,9 @@ public class Tile {
     private double x, y;
     private String name;
     public Tile(String name, BufferedImage img, boolean coll, double x, double y) {
-        this.name = name;
         hasCollision = coll;
         image = img;
+        this.name = name;
         this.x = x;
         this.y = y;
     }
