@@ -171,54 +171,63 @@ public class Player implements KeyListener {
     }
 
     public void update() {
+        boolean moving = false;
         if (upPressed || downPressed || rightPressed || leftPressed) {
             isColliding = false;
             cm.checkCollision(this);
             if (!isColliding) {
-                if (upPressed) {
+                if (upPressed && !leftPressed && !downPressed && !rightPressed) {
                         changeYPos(-1 * getPlayerSpeed());
+                        moving = true;
                     try {
                         Thread.sleep(5);
                     } catch (InterruptedException e) {
                         throw new RuntimeException(e);
                     }
-                } else if (leftPressed) {
+                } else if (!upPressed && leftPressed && !downPressed && !rightPressed) {
                         changeXPos(-1 * getPlayerSpeed());
+                        moving = true;
                     try {
                         Thread.sleep(5);
                     } catch (InterruptedException e) {
                         throw new RuntimeException(e);
                     }
-                } else if (downPressed) {
+                } else if (!upPressed && !leftPressed && downPressed && !rightPressed) {
                         changeYPos(getPlayerSpeed());
+                        moving = true;
                     try {
                         Thread.sleep(5);
                     } catch (InterruptedException e) {
                         throw new RuntimeException(e);
                     }
-                } else if (rightPressed) {
+                } else if (!upPressed && !leftPressed && !downPressed && rightPressed) {
                         changeXPos(getPlayerSpeed());
+                        moving = true;
                     try {
                         Thread.sleep(5);
                     } catch (InterruptedException e) {
                         throw new RuntimeException(e);
                     }
+                } else {
+                    moving = false;
                 }
-
-                spriteCounter++;
-                if (spriteCounter > 15) {
-                    if (spriteNum == 1) {
-                        spriteNum = 2;
-                    } else if (spriteNum == 2) {
-                        spriteNum = 3;
-                    } else {
-                        spriteNum = 1;
+                if (moving) {
+                    spriteCounter++;
+                    if (spriteCounter > 15) {
+                        if (spriteNum == 1) {
+                            spriteNum = 2;
+                        } else if (spriteNum == 2) {
+                            spriteNum = 3;
+                        } else {
+                            spriteNum = 1;
+                        }
+                        spriteCounter = 0;
                     }
-                    spriteCounter = 0;
                 }
             }
         }
-        hitBox.setLocation((int) (screenX + 13), (int) (screenY + 24));
+
+        hitBox.setLocation (screenX + 13,  screenY + 24);
     }
     @Override
     public void keyReleased(KeyEvent e) {

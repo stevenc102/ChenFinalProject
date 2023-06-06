@@ -5,18 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d6512a21-4ed6-4d58-b895-09efb0bec7b8" name="Changes" comment="aaaaaaaaaaaaaaaaaaaaaaaaaa">
-      <change afterPath="$PROJECT_DIR$/src/aaaaaa" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/CollisionManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CollisionManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Panel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Panel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Tile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Tile.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/TileManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TileManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/map.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/map.txt" afterDir="false" />
     </list>
-    <list id="324576a1-374b-4300-b3c1-864135a3528e" name="Changes by student" comment="">
-      <change beforePath="$PROJECT_DIR$/src/TileManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TileManager.java" afterDir="false" />
-    </list>
+    <list id="324576a1-374b-4300-b3c1-864135a3528e" name="Changes by student" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -31,26 +24,6 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-  </component>
-  <component name="LineStatusTrackerManager">
-    <file path="$PROJECT_DIR$/src/TileManager.java">
-      <ranges>
-        <range start1="2" end1="2" start2="2" end2="3" changelist="324576a1-374b-4300-b3c1-864135a3528e" />
-        <range start1="3" end1="3" start2="4" end2="6" changelist="324576a1-374b-4300-b3c1-864135a3528e" />
-        <range start1="7" end1="23" start2="10" end2="11" changelist="d6512a21-4ed6-4d58-b895-09efb0bec7b8" />
-        <range start1="27" end1="28" start2="15" end2="17" changelist="d6512a21-4ed6-4d58-b895-09efb0bec7b8" />
-        <range start1="34" end1="34" start2="23" end2="24" changelist="324576a1-374b-4300-b3c1-864135a3528e" />
-        <range start1="35" end1="35" start2="25" end2="26" changelist="324576a1-374b-4300-b3c1-864135a3528e" />
-        <range start1="36" end1="36" start2="27" end2="28" changelist="324576a1-374b-4300-b3c1-864135a3528e" />
-        <range start1="37" end1="37" start2="29" end2="32" changelist="d6512a21-4ed6-4d58-b895-09efb0bec7b8" />
-        <range start1="39" end1="39" start2="34" end2="59" changelist="d6512a21-4ed6-4d58-b895-09efb0bec7b8" />
-        <range start1="41" end1="43" start2="61" end2="63" changelist="d6512a21-4ed6-4d58-b895-09efb0bec7b8" />
-        <range start1="61" end1="61" start2="81" end2="93" changelist="d6512a21-4ed6-4d58-b895-09efb0bec7b8" />
-        <range start1="66" end1="74" start2="98" end2="119" changelist="d6512a21-4ed6-4d58-b895-09efb0bec7b8" />
-        <range start1="75" end1="76" start2="120" end2="120" changelist="d6512a21-4ed6-4d58-b895-09efb0bec7b8" />
-        <range start1="77" end1="77" start2="121" end2="123" changelist="d6512a21-4ed6-4d58-b895-09efb0bec7b8" />
-      </ranges>
-    </file>
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
