@@ -4,7 +4,7 @@ public class CollisionManager {
         int playerLeftWorldX = 13 + Player.worldXPos;
         int playerRightWorldX = 13 + Player.worldXPos + p.getHitBox().width;
         int playerTopWorldY =  24 + Player.worldYPos;
-        int playerBottomWorldY =  24 +Player.worldYPos + p.getHitBox().height;
+        int playerBottomWorldY =  24 + Player.worldYPos + p.getHitBox().height;
 
         int playerLeftCol = playerLeftWorldX / (Panel.TILE_SIZE ) ;
         int playerRightCol = playerRightWorldX / (Panel.TILE_SIZE );
@@ -22,6 +22,7 @@ public class CollisionManager {
                     if (tile1.hasCollision() || tile2.hasCollision()) {
                         p.setIsColliding(true);
                     }
+
                 }
 
         } else if (p.getDirection().equals("down")) {
