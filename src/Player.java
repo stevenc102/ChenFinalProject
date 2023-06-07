@@ -20,7 +20,9 @@ public class Player implements KeyListener {
     private CollisionManager cm;
     private int temp;
     private Rectangle hitBox;
+    private boolean hasShovel;
     public Player()  {
+        hasShovel = false;
         cm = new CollisionManager();
         isColliding = false;
         spriteCounter = 0;
@@ -164,14 +166,39 @@ public class Player implements KeyListener {
         } else if (temp == KeyEvent.VK_S || temp == KeyEvent.VK_DOWN) {
             downPressed = true;
             direction = "down";
-        } else  {
+        } else if (temp == KeyEvent.VK_D || temp == KeyEvent.VK_RIGHT) {
             rightPressed = true;
             direction = "right";
+        }
+        if (temp == KeyEvent.VK_E) {
+            try {
+                shovel();
+            } catch (IOException ex) {
+                throw new RuntimeException(ex);
+            }
+        }
+    }
+
+    public void shovel() throws IOException{
+        if (hasShovel) {
+            int row = (worldXPos + (Panel.TILE_SIZE / 2))/ Panel.TILE_SIZE;
+            int col = (worldYPos + (Panel.TILE_SIZE / 2))/ Panel.TILE_SIZE;
+            if (TileManager.tiles[row][col].getName().equals("sandSuspicious")) {
+                TileManager.tiles[row][col] = new Tile("sand1", ImageIO.read(getClass().getResourceAsStream("/Terrain/Sand.png")), false, 0, 0);
+            }
         }
     }
 
     public void update() {
-        boolean moving = false;
+        boolean moving;
+        int row = (worldXPos + (Panel.TILE_SIZE / 2))/ Panel.TILE_SIZE;
+        int col = (worldYPos + (Panel.TILE_SIZE / 2))/ Panel.TILE_SIZE;
+        if (TileManager.tiles[row][col].getName().equals("shovel")){
+
+        } else if (TileManager.tiles[row][col].getName().equals("axe")) {
+
+        }
+
         if (upPressed || downPressed || rightPressed || leftPressed) {
             isColliding = false;
             cm.checkCollision(this);
@@ -249,6 +276,12 @@ public class Player implements KeyListener {
     public void draw(Graphics2D g2) {
         BufferedImage image = getImage();
         g2.drawImage(image, screenX, screenY, 48, 48, null);
+    }
+
+    public void getItem(String name) {
+        if (name.equals("Shovel")) {
+            hasShovel = true;
+        }
     }
 
 

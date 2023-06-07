@@ -16,12 +16,9 @@ public class CollisionManager {
         Tile tile1, tile2;
         if (p.getDirection().equals("up")) {
                 playerTopRow = (playerTopWorldY - p.getPlayerSpeed()) / Panel.TILE_SIZE;
-                System.out.println(playerTopRow);
                 if (playerTopRow >= 0 && playerTopRow < 48 && playerLeftCol < 48 && playerLeftCol >=0 && playerRightCol < 48 && playerRightCol >= 0) {
                     tile1 = TileManager.tiles[playerLeftCol][playerTopRow];
                     tile2 = TileManager.tiles[playerRightCol][playerTopRow];
-                    System.out.println(tile1.getName());
-                    System.out.println(tile2.getName());
                     if (tile1.hasCollision() || tile2.hasCollision()) {
                         p.setIsColliding(true);
                     }

@@ -39,12 +39,12 @@ public class TileManager {
             BufferedReader br = new BufferedReader(new InputStreamReader(is));
             int col = 0;
             int row = 0;
-            while(col < Panel.MAX_WORLD_COL && row < Panel.MAX_SCREEN_ROW) {
+            while(col < Panel.MAX_WORLD_COL && row < Panel.MAX_WORLD_ROW) {
                 String line = br.readLine();
                 while(col < Panel.MAX_WORLD_COL) {
                     String[] numbers = line.split(" ");
                     int num = Integer.parseInt(numbers[col]);
-                    map[row][col] = num;
+                    map[col][row] = num;
                     col++;
                 }
                 if (col == Panel.MAX_WORLD_COL) {
