@@ -4,15 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d6512a21-4ed6-4d58-b895-09efb0bec7b8" name="Changes" comment="collision + temp fix for phasing">
-      <change afterPath="$PROJECT_DIR$/src/Terrain/Sand_Suspicious.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CollisionManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CollisionManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/TileManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TileManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/map.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/map.txt" afterDir="false" />
-    </list>
-    <list id="a658ca68-642f-4665-a7bf-b9e19ce77bbb" name="Changes by epic gamer" comment="">
+    <list default="true" id="d6512a21-4ed6-4d58-b895-09efb0bec7b8" name="Changes" comment="map stuff" />
+    <list id="a658ca68-642f-4665-a7bf-b9e19ce77bbb" name="Changes by epic gamer" comment="Changes by epic gamer">
       <change beforePath="$PROJECT_DIR$/src/CollisionManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CollisionManager.java" afterDir="false" />
     </list>
     <list id="85d95254-641d-449c-9802-64907fb70461" name="Changes by student" comment="">
@@ -32,25 +25,6 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-  </component>
-  <component name="LineStatusTrackerManager">
-    <file path="$PROJECT_DIR$/src/CollisionManager.java">
-      <ranges>
-        <range start1="6" end1="7" start2="6" end2="7" changelist="a658ca68-642f-4665-a7bf-b9e19ce77bbb" />
-        <range start1="18" end1="19" start2="18" end2="18" changelist="d6512a21-4ed6-4d58-b895-09efb0bec7b8" />
-        <range start1="22" end1="24" start2="21" end2="21" changelist="d6512a21-4ed6-4d58-b895-09efb0bec7b8" />
-        <range start1="27" end1="27" start2="24" end2="25" changelist="a658ca68-642f-4665-a7bf-b9e19ce77bbb" />
-      </ranges>
-    </file>
-    <file path="$PROJECT_DIR$/src/TileManager.java">
-      <ranges>
-        <range start1="12" end1="13" start2="12" end2="13" changelist="85d95254-641d-449c-9802-64907fb70461" />
-        <range start1="32" end1="32" start2="32" end2="33" changelist="85d95254-641d-449c-9802-64907fb70461" />
-        <range start1="41" end1="42" start2="42" end2="43" changelist="d6512a21-4ed6-4d58-b895-09efb0bec7b8" />
-        <range start1="46" end1="47" start2="47" end2="48" changelist="d6512a21-4ed6-4d58-b895-09efb0bec7b8" />
-        <range start1="93" end1="93" start2="94" end2="96" changelist="85d95254-641d-449c-9802-64907fb70461" />
-      </ranges>
-    </file>
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -121,7 +95,14 @@
       <option name="project" value="LOCAL" />
       <updated>1686092652997</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="map stuff">
+      <created>1686154600827</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1686154600827</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -138,6 +119,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="aaaaaaaaaaaaaaaaaaaaaaaaaa" />
     <MESSAGE value="collision + temp fix for phasing" />
-    <option name="LAST_COMMIT_MESSAGE" value="collision + temp fix for phasing" />
+    <MESSAGE value="map stuff" />
+    <MESSAGE value="Changes by epic gamer" />
+    <option name="LAST_COMMIT_MESSAGE" value="Changes by epic gamer" />
   </component>
 </project>
