@@ -42,7 +42,11 @@ public class Panel extends JPanel implements Runnable {
     public void run() {
         while(gameThread != null) {
             repaint();
-            player.update();
+            try {
+                player.update();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
         }
     }
     public void paintComponent(Graphics g) {

@@ -17,12 +17,14 @@ public class Player implements KeyListener {
     private String direction;
     private int spriteCounter;
     private boolean isColliding;
+    private boolean hasAxe;
     private CollisionManager cm;
     private int temp;
     private Rectangle hitBox;
     private boolean hasShovel;
     public Player()  {
         hasShovel = false;
+        hasAxe = false;
         cm = new CollisionManager();
         isColliding = false;
         spriteCounter = 0;
@@ -35,7 +37,7 @@ public class Player implements KeyListener {
         downPressed = false;
         leftPressed = false;
         rightPressed = false;
-        hitBox = new Rectangle((int) worldXPos, (int) worldYPos, 23, 24);
+        hitBox = new Rectangle(worldXPos, worldYPos, 23, 24);
         try {
             getPlayerImage();
         } catch (IOException e) {
@@ -173,6 +175,7 @@ public class Player implements KeyListener {
         if (temp == KeyEvent.VK_E) {
             try {
                 shovel();
+                System.out.println("poggers");
             } catch (IOException ex) {
                 throw new RuntimeException(ex);
             }
@@ -183,20 +186,21 @@ public class Player implements KeyListener {
         if (hasShovel) {
             int row = (worldXPos + (Panel.TILE_SIZE / 2))/ Panel.TILE_SIZE;
             int col = (worldYPos + (Panel.TILE_SIZE / 2))/ Panel.TILE_SIZE;
-            if (TileManager.tiles[row][col].getName().equals("sandSuspicious")) {
+            if (TileManager.tiles[row][col].getName().equals("suspiciousSand")) {
                 TileManager.tiles[row][col] = new Tile("sand1", ImageIO.read(getClass().getResourceAsStream("/Terrain/Sand.png")), false, 0, 0);
             }
         }
     }
 
-    public void update() {
+    public void update() throws IOException {
         boolean moving;
         int row = (worldXPos + (Panel.TILE_SIZE / 2))/ Panel.TILE_SIZE;
         int col = (worldYPos + (Panel.TILE_SIZE / 2))/ Panel.TILE_SIZE;
         if (TileManager.tiles[row][col].getName().equals("shovel")){
-
+            TileManager.tiles[row][col] = new Tile("sand1", ImageIO.read(getClass().getResourceAsStream("/Terrain/Sand.png")), false, 0, 0);
         } else if (TileManager.tiles[row][col].getName().equals("axe")) {
-
+            TileManager.tiles[row][col] = new Tile("sand1", ImageIO.read(getClass().getResourceAsStream("/Terrain/Sand.png")), false, 0, 0);
+            hasShovel = true;
         }
 
         if (upPressed || downPressed || rightPressed || leftPressed) {

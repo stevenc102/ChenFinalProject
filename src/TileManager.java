@@ -10,7 +10,7 @@ public class TileManager {
     public static Tile[][] tiles;
     public static int[][] map =  new int[48][48];
     private Tile sand1, sand2, sandRock, water, palmTree, waterCornerIn, waterCornerInFlipped, waterCornerOut, waterCornerOutFlipped, waterCornerConnect, waterCornerConnectFlipped, waterFlat, waterFlatFlipped,
-                 waterFlat2, waterFlat2Flipped, suspiciousSand;
+                 waterFlat2, waterFlat2Flipped, suspiciousSand, axeTile, shovelTile;
 
     public TileManager() throws IOException {
         initMap();
@@ -30,7 +30,9 @@ public class TileManager {
         waterFlatFlipped = new Tile("waterFlatFlipped",ImageIO.read(getClass().getResourceAsStream("/Terrain/Water_Flat_Flipped.png")), true, 0, 0);
         waterFlat2 = new Tile("waterFlat2",ImageIO.read(getClass().getResourceAsStream("/Terrain/Water_Flat2.png")), true, 0, 0);
         waterFlat2Flipped = new Tile("waterFlat2Flipped",ImageIO.read(getClass().getResourceAsStream("/Terrain/Water_Flat2_Flipped.png")), true, 0, 0);
-        suspiciousSand = new Tile("sandSuspicious", ImageIO.read(getClass().getResourceAsStream("/Terrain/Sand_Suspicious.png)")) ,false, 0, 0);
+        suspiciousSand = new Tile("suspiciousSand",ImageIO.read(getClass().getResourceAsStream("/Terrain/Sand_Suspicious.png")), false, 0, 0);
+        axeTile = new Tile("axe",ImageIO.read(getClass().getResourceAsStream("/Terrain/Tile_Axe.png")), false, 0, 0);
+        shovelTile = new Tile("shovel",ImageIO.read(getClass().getResourceAsStream("/Terrain/Tile_Shovel.png")), false, 0, 0);
         initTiles();
     }
 
@@ -94,6 +96,10 @@ public class TileManager {
                     tiles[i][j] = waterFlat2Flipped;
                 } else if (map[i][j] == 15) {
                     tiles[i][j] = suspiciousSand;
+                } else if (map[i][j] == 16) {
+                    tiles[i][j] = axeTile;
+                } else {
+                    tiles[i][j] = shovelTile;
                 }
             }
         }

@@ -4,13 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d6512a21-4ed6-4d58-b895-09efb0bec7b8" name="Changes" comment="map stuff" />
-    <list id="a658ca68-642f-4665-a7bf-b9e19ce77bbb" name="Changes by epic gamer" comment="Changes by epic gamer">
-      <change beforePath="$PROJECT_DIR$/src/CollisionManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CollisionManager.java" afterDir="false" />
-    </list>
-    <list id="85d95254-641d-449c-9802-64907fb70461" name="Changes by student" comment="">
+    <list default="true" id="d6512a21-4ed6-4d58-b895-09efb0bec7b8" name="Changes" comment="collision + temp fix for phasing">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Panel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Panel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Player.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/TileManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TileManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/map.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/map.txt" afterDir="false" />
     </list>
+    <list id="324576a1-374b-4300-b3c1-864135a3528e" name="Changes by student" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -95,14 +96,7 @@
       <option name="project" value="LOCAL" />
       <updated>1686092652997</updated>
     </task>
-    <task id="LOCAL-00003" summary="map stuff">
-      <created>1686154600827</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1686154600827</updated>
-    </task>
-    <option name="localTasksCounter" value="4" />
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -119,8 +113,6 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="aaaaaaaaaaaaaaaaaaaaaaaaaa" />
     <MESSAGE value="collision + temp fix for phasing" />
-    <MESSAGE value="map stuff" />
-    <MESSAGE value="Changes by epic gamer" />
-    <option name="LAST_COMMIT_MESSAGE" value="Changes by epic gamer" />
+    <option name="LAST_COMMIT_MESSAGE" value="collision + temp fix for phasing" />
   </component>
 </project>
