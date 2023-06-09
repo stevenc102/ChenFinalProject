@@ -10,7 +10,7 @@ public class Frame extends JFrame {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(768,768);
         frame.setResizable(false);
-        frame.setTitle("aaaaaaaaa");
+        frame.setTitle("Koala Treasure Hunt");
         frame.add(panel);
         frame.setVisible(true);
     }

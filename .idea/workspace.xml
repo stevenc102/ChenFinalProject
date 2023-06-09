@@ -4,12 +4,27 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d6512a21-4ed6-4d58-b895-09efb0bec7b8" name="Changes" comment="collision + temp fix for phasing">
+    <list default="true" id="d6512a21-4ed6-4d58-b895-09efb0bec7b8" name="Changes" comment="yippeee">
+      <change afterPath="$PROJECT_DIR$/src/Sprites/Amethyst.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Sprites/Diamond.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Terrain/Cut_Tree.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Text/Number_Eight.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Text/Number_Five.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Text/Number_Four.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Text/Number_Nine.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Text/Number_One.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Text/Number_Seven.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Text/Number_Six.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Text/Number_Three.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Text/Number_Two.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Text/Number_Zero.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Text/Score.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Text/Time.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Frame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Frame.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Panel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Panel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Player.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/TileManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TileManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/map.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/map.txt" afterDir="false" />
     </list>
     <list id="324576a1-374b-4300-b3c1-864135a3528e" name="Changes by student" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -36,25 +51,30 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/student/IdeaProjects/ChenFinalProject/src/Terrain&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;org.jetbrains.plugins.github.ui.GithubSettingsConfigurable&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "codeWithMe.voiceChat.enabledByDefault": "false",
+    "last_opened_file_path": "C:/Users/Steven Chen/IdeaProjects/ChenFinalProject/src/Sprites",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "org.jetbrains.plugins.github.ui.GithubSettingsConfigurable"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Steven Chen\IdeaProjects\ChenFinalProject\src\Sprites" />
+      <recent name="C:\Users\Steven Chen\IdeaProjects\ChenFinalProject\src\Terrain" />
+      <recent name="C:\Users\Steven Chen\IdeaProjects\ChenFinalProject\src\Text" />
       <recent name="C:\Users\student\IdeaProjects\ChenFinalProject\src\Terrain" />
       <recent name="C:\Users\student\IdeaProjects\ChenFinalProject\src\Sprites" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Steven Chen\IdeaProjects\ChenFinalProject\src\Text" />
+      <recent name="C:\Users\Steven Chen\IdeaProjects\ChenFinalProject\src\" />
       <recent name="C:\Users\student\IdeaProjects\ChenFinalProject\src\Terrain" />
       <recent name="C:\Users\student\IdeaProjects\ChenFinalProject\src\Sprites" />
     </key>
@@ -96,7 +116,14 @@
       <option name="project" value="LOCAL" />
       <updated>1686092652997</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="yippeee">
+      <created>1686190681241</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1686190681241</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -113,6 +140,19 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="aaaaaaaaaaaaaaaaaaaaaaaaaa" />
     <MESSAGE value="collision + temp fix for phasing" />
-    <option name="LAST_COMMIT_MESSAGE" value="collision + temp fix for phasing" />
+    <MESSAGE value="yippeee" />
+    <option name="LAST_COMMIT_MESSAGE" value="yippeee" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-field">
+          <url>file://$PROJECT_DIR$/src/Player.java</url>
+          <line>31</line>
+          <properties field="score" class="Player" />
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

@@ -1,12 +1,15 @@
 import javax.imageio.ImageIO;
+import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 
 
-public class Player implements KeyListener {
+public class Player implements KeyListener, ActionListener {
     public static int worldXPos, worldYPos;
     public static final int screenX = Panel.SCREEN_LENGTH / 2 - (Panel.TILE_SIZE), screenY = Panel.SCREEN_WIDTH / 2 - (Panel.TILE_SIZE);
     private boolean upPressed, downPressed, leftPressed, rightPressed;
@@ -22,7 +25,18 @@ public class Player implements KeyListener {
     private int temp;
     private Rectangle hitBox;
     private boolean hasShovel;
+    private Timer time;
+    private int seconds;
+    private boolean showStats;
+    private int logs;
+    private int score;
     public Player()  {
+        score = 0;
+        seconds = 15;
+        showStats = false;
+        time = new Timer(1000, null);
+        time.addActionListener(this);
+        time.start();
         hasShovel = false;
         hasAxe = false;
         cm = new CollisionManager();
@@ -172,24 +186,53 @@ public class Player implements KeyListener {
             rightPressed = true;
             direction = "right";
         }
-        if (temp == KeyEvent.VK_E) {
+        if (temp == KeyEvent.VK_G) {
+            showStats = true;
+        }
+        if (temp == KeyEvent.VK_Q && hasAxe) {
             try {
-                shovel();
-                System.out.println("poggers");
+                chop();
             } catch (IOException ex) {
                 throw new RuntimeException(ex);
             }
         }
+        if (temp == KeyEvent.VK_E && hasShovel) {
+            try {
+                shovel();
+            } catch (IOException ex) {
+                throw new RuntimeException(ex);
+            }
+        }
+
     }
 
     public void shovel() throws IOException{
-        if (hasShovel) {
             int row = (worldXPos + (Panel.TILE_SIZE / 2))/ Panel.TILE_SIZE;
             int col = (worldYPos + (Panel.TILE_SIZE / 2))/ Panel.TILE_SIZE;
             if (TileManager.tiles[row][col].getName().equals("suspiciousSand")) {
                 TileManager.tiles[row][col] = new Tile("sand1", ImageIO.read(getClass().getResourceAsStream("/Terrain/Sand.png")), false, 0, 0);
+
             }
-        }
+    }
+
+    public void chop() throws IOException {
+            int row = (worldXPos + (Panel.TILE_SIZE / 2))/ Panel.TILE_SIZE;
+            int col = (worldYPos + (Panel.TILE_SIZE / 2))/ Panel.TILE_SIZE;
+            if (direction.equals("down")) {
+                col += 1;
+            } else if (direction.equals("right")) {
+                row += 1;
+            } else if (direction.equals("left")) {
+                row -= 1;
+            } else if (direction.equals("up")) {
+                col -= 1;
+            }
+            System.out.println("hey");
+            System.out.println(TileManager.tiles[row][col].getName());
+            if (TileManager.tiles[row][col].getName().equals("palmTree")) {
+                System.out.println("hi");
+                TileManager.tiles[row][col] = new Tile("sand1", ImageIO.read(getClass().getResourceAsStream("/Terrain/Sand.png")), false, 0, 0);
+            }
     }
 
     public void update() throws IOException {
@@ -198,10 +241,13 @@ public class Player implements KeyListener {
         int col = (worldYPos + (Panel.TILE_SIZE / 2))/ Panel.TILE_SIZE;
         if (TileManager.tiles[row][col].getName().equals("shovel")){
             TileManager.tiles[row][col] = new Tile("sand1", ImageIO.read(getClass().getResourceAsStream("/Terrain/Sand.png")), false, 0, 0);
-        } else if (TileManager.tiles[row][col].getName().equals("axe")) {
-            TileManager.tiles[row][col] = new Tile("sand1", ImageIO.read(getClass().getResourceAsStream("/Terrain/Sand.png")), false, 0, 0);
             hasShovel = true;
         }
+        if (TileManager.tiles[row][col].getName().equals("axe")) {
+            TileManager.tiles[row][col] = new Tile("sand1", ImageIO.read(getClass().getResourceAsStream("/Terrain/Sand.png")), false, 0, 0);
+            hasAxe = true;
+        }
+
 
         if (upPressed || downPressed || rightPressed || leftPressed) {
             isColliding = false;
@@ -275,18 +321,82 @@ public class Player implements KeyListener {
         if (temp == KeyEvent.VK_D || temp == KeyEvent.VK_RIGHT) {
             rightPressed = false;
         }
-    }
-
-    public void draw(Graphics2D g2) {
-        BufferedImage image = getImage();
-        g2.drawImage(image, screenX, screenY, 48, 48, null);
-    }
-
-    public void getItem(String name) {
-        if (name.equals("Shovel")) {
-            hasShovel = true;
+        if (temp == KeyEvent.VK_G) {
+            showStats = false;
         }
     }
 
+    public void draw(Graphics2D g2) throws IOException {
+        BufferedImage image = getImage();
+        g2.drawImage(image, screenX, screenY, 48, 48, null);
+        if (showStats) {
+            BufferedImage s = ImageIO.read(getClass().getResourceAsStream("/Text/Score.png"));
+            BufferedImage t = ImageIO.read(getClass().getResourceAsStream("/Text/Time.png"));
+            g2.drawImage(s, screenX - 25, screenY + Panel.TILE_SIZE + 10, 58, 20, null);
+            g2.drawImage(t, screenX - 25, screenY + Panel.TILE_SIZE + 40, 48, 20, null);
+            int temp = seconds;
+            int offset = 0;
+            for (int i = (seconds + "").length(); i > 0; i-- ) {
+                if ((seconds + "").length() != 1) {
+                    temp /= (Math.pow(10, i - 1));
+                    BufferedImage bi = getNumber(temp);
+                    offset += 19;
+                    temp = (int) (seconds % (Math.pow(10, i - 1)));
+                    g2.drawImage(bi, screenX + 10 + offset, screenY + Panel.TILE_SIZE + 38, 24, 24, null);
+                } else {
+                    BufferedImage bi = getNumber(temp);
+                    g2.drawImage(bi, screenX + 29 + offset, screenY + Panel.TILE_SIZE + 38, 24, 24, null);
+                }
+            }
+            int temp2 = score;
+            int offset2 = 0;
+            for (int i = (score + "").length(); i > 0; i--) {
+                if ((score + "").length() != 1) {
+                    temp2 /= (Math.pow(10, i - 1));
+                    BufferedImage bi = getNumber(temp2);
+                    offset2 += 19;
+                    temp2 = (int) (score % (Math.pow(10, i - 1)));
+                    g2.drawImage(bi, screenX + 16 + offset2, screenY + Panel.TILE_SIZE + 8, 24, 24, null);
+                } else {
+                    if ((score + "").length() == 1) {
+                        BufferedImage bi = getNumber(temp2);
+                        g2.drawImage(bi, screenX + 35 + offset2, screenY + Panel.TILE_SIZE + 8, 24, 24, null);
+                    }
+                }
+            }
+        }
+    }
+    public void actionPerformed(ActionEvent e) {
+        Object o = e.getSource();
+        if (o instanceof Timer && seconds > 0) {
+            seconds--;
+        }
+    }
+
+    public BufferedImage getNumber(int temp) throws IOException {
+        BufferedImage bi;
+        if (temp == 0) {
+            bi = ImageIO.read(getClass().getResourceAsStream("/Text/Number_Zero.png"));
+        } else if (temp == 1) {
+            bi = ImageIO.read(getClass().getResourceAsStream("/Text/Number_One.png"));
+        } else if (temp == 2) {
+            bi = ImageIO.read(getClass().getResourceAsStream("/Text/Number_Two.png"));
+        } else if (temp == 3) {
+            bi = ImageIO.read(getClass().getResourceAsStream("/Text/Number_Three.png"));
+        } else if (temp == 4) {
+            bi = ImageIO.read(getClass().getResourceAsStream("/Text/Number_Four.png"));
+        } else if (temp == 5) {
+            bi = ImageIO.read(getClass().getResourceAsStream("/Text/Number_Five.png"));
+        } else if (temp == 6) {
+            bi = ImageIO.read(getClass().getResourceAsStream("/Text/Number_Six.png"));
+        } else if (temp == 7) {
+            bi = ImageIO.read(getClass().getResourceAsStream("/Text/Number_Seven.png"));
+        } else if (temp == 8) {
+            bi = ImageIO.read(getClass().getResourceAsStream("/Text/Number_Eight.png"));
+        } else {
+            bi = ImageIO.read(getClass().getResourceAsStream("/Text/Number_Nine.png"));
+        }
+        return bi;
+    }
 
 }

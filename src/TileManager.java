@@ -10,7 +10,7 @@ public class TileManager {
     public static Tile[][] tiles;
     public static int[][] map =  new int[48][48];
     private Tile sand1, sand2, sandRock, water, palmTree, waterCornerIn, waterCornerInFlipped, waterCornerOut, waterCornerOutFlipped, waterCornerConnect, waterCornerConnectFlipped, waterFlat, waterFlatFlipped,
-                 waterFlat2, waterFlat2Flipped, suspiciousSand, axeTile, shovelTile;
+                 waterFlat2, waterFlat2Flipped, suspiciousSand, axeTile, shovelTile, cutTree;
 
     public TileManager() throws IOException {
         initMap();
@@ -98,8 +98,17 @@ public class TileManager {
                     tiles[i][j] = suspiciousSand;
                 } else if (map[i][j] == 16) {
                     tiles[i][j] = axeTile;
-                } else {
+                } else if (map[i][j] == 17){
                     tiles[i][j] = shovelTile;
+                } else if (map[i][j] == 18) {
+                    tiles[i][j] = cutTree;
+                }
+            }
+        }
+        for (int i = 0; i < tiles.length; i++) {
+            for (int j = 0; j < tiles[i].length; j++) {
+                if ((int)(Math.random() * 99) + 1 == 1 && tiles[i][j].getName().equals("sand1")) {
+                    tiles[i][j] = suspiciousSand;
                 }
             }
         }
