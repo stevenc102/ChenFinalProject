@@ -33,6 +33,7 @@ public class TileManager {
         suspiciousSand = new Tile("suspiciousSand",ImageIO.read(getClass().getResourceAsStream("/Terrain/Sand_Suspicious.png")), false, 0, 0);
         axeTile = new Tile("axe",ImageIO.read(getClass().getResourceAsStream("/Terrain/Tile_Axe.png")), false, 0, 0);
         shovelTile = new Tile("shovel",ImageIO.read(getClass().getResourceAsStream("/Terrain/Tile_Shovel.png")), false, 0, 0);
+        cutTree = new Tile("cutTree",ImageIO.read(getClass().getResourceAsStream("/Terrain/Cut_Tree.png")), true, 0, 0);
         initTiles();
     }
 
@@ -107,8 +108,11 @@ public class TileManager {
         }
         for (int i = 0; i < tiles.length; i++) {
             for (int j = 0; j < tiles[i].length; j++) {
-                if ((int)(Math.random() * 99) + 1 == 1 && tiles[i][j].getName().equals("sand1")) {
+                int rand = (int)(Math.random() * 99) + 1;
+                if (rand == 1 &&tiles[i][j].getName().equals("sand1")) {
                     tiles[i][j] = suspiciousSand;
+                } else if (rand == 2&& tiles[i][j].getName().equals("sand1")){
+                    tiles[i][j] = palmTree;
                 }
             }
         }

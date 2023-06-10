@@ -30,7 +30,14 @@ public class Player implements KeyListener, ActionListener {
     private boolean showStats;
     private int logs;
     private int score;
+    private boolean gotItem;
+    private int mostRecent;
+    private boolean first;
+    private int begin;
     public Player()  {
+        first = true;
+        mostRecent = 0;
+        gotItem = false;
         score = 0;
         seconds = 15;
         showStats = false;
@@ -211,9 +218,18 @@ public class Player implements KeyListener, ActionListener {
             int col = (worldYPos + (Panel.TILE_SIZE / 2))/ Panel.TILE_SIZE;
             if (TileManager.tiles[row][col].getName().equals("suspiciousSand")) {
                 TileManager.tiles[row][col] = new Tile("sand1", ImageIO.read(getClass().getResourceAsStream("/Terrain/Sand.png")), false, 0, 0);
-
+                gotItem = true;
+                int rand = (int) (Math.random() * 5) + 1;
+                if (rand == 1) {
+                    mostRecent = 1;
+                    score+= 800;
+                } else {
+                    mostRecent = 2;
+                    score+= 100;
+                }
             }
     }
+
 
     public void chop() throws IOException {
             int row = (worldXPos + (Panel.TILE_SIZE / 2))/ Panel.TILE_SIZE;
@@ -227,11 +243,11 @@ public class Player implements KeyListener, ActionListener {
             } else if (direction.equals("up")) {
                 col -= 1;
             }
-            System.out.println("hey");
-            System.out.println(TileManager.tiles[row][col].getName());
             if (TileManager.tiles[row][col].getName().equals("palmTree")) {
-                System.out.println("hi");
-                TileManager.tiles[row][col] = new Tile("sand1", ImageIO.read(getClass().getResourceAsStream("/Terrain/Sand.png")), false, 0, 0);
+                TileManager.tiles[row][col] = new Tile("cutTree",ImageIO.read(getClass().getResourceAsStream("/Terrain/Cut_Tree.png")), true, 0, 0);
+                if (logs < 99) {
+                    logs++;
+                }
             }
     }
 
@@ -336,7 +352,7 @@ public class Player implements KeyListener, ActionListener {
             g2.drawImage(t, screenX - 25, screenY + Panel.TILE_SIZE + 40, 48, 20, null);
             int temp = seconds;
             int offset = 0;
-            for (int i = (seconds + "").length(); i > 0; i-- ) {
+            for (int i = (seconds + "").length(); i > 0; i--) {
                 if ((seconds + "").length() != 1) {
                     temp /= (Math.pow(10, i - 1));
                     BufferedImage bi = getNumber(temp);
@@ -364,6 +380,40 @@ public class Player implements KeyListener, ActionListener {
                     }
                 }
             }
+            int temp3 = logs;
+            int offset3 = 0;
+            for (int i = (logs + "").length(); i > 0; i--) {
+                if ((logs + "").length() != 1) {
+                    g2.drawImage(ImageIO.read(getClass().getResourceAsStream("/Text/Logs.png")), 550, 694, 77, 30, null);
+                    temp3 /= (Math.pow(10, i - 1));
+                    BufferedImage bi = getNumber(temp3);
+                    offset3 += 19;
+                    temp3 = (int) (logs % (Math.pow(10, i - 1)));
+                    g2.drawImage(bi, 600 + offset3, 694, 30, 30, null);
+                } else {
+                    g2.drawImage(ImageIO.read(getClass().getResourceAsStream("/Text/Logs.png")), 560, 694, 77, 30, null);
+                    if ((logs + "").length() == 1) {
+                        BufferedImage bi = getNumber(temp3);
+                        g2.drawImage(bi, 640 + offset3, 694, 30, 30, null);
+                    }
+                }
+                g2.drawImage(ImageIO.read(getClass().getResourceAsStream("/Text/Forward_Slash.png")), 670,694, 30, 30,null);
+                g2.drawImage(ImageIO.read(getClass().getResourceAsStream("/Text/Number_One.png")), 695,694, 30, 30,null);
+                g2.drawImage(ImageIO.read(getClass().getResourceAsStream("/Text/Number_Six.png")), 719,694, 30, 30,null);
+            }
+        }
+
+
+        if (gotItem) {
+            BufferedImage bi;
+            int offset = 0;
+            if (mostRecent == 1) {
+                bi = ImageIO.read(getClass().getResourceAsStream("/Sprites/Diamond.png"));
+                offset = -3;
+            } else {
+                bi = ImageIO.read(getClass().getResourceAsStream("/Sprites/Amethyst.png"));
+            }
+            g2.drawImage(bi, screenX + offset, screenY - Panel.TILE_SIZE / 2 - 25, 48, 48, null);
         }
     }
     public void actionPerformed(ActionEvent e) {
