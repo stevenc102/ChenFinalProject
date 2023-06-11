@@ -138,8 +138,8 @@ public class TileManager {
         while(palmTrees < 16) {
             for (int i = 0; i < tiles.length; i++) {
                 for (int j = 0; j < tiles[i].length; j++) {
-                    int rand = (int) (Math.random() * 99) + 1;
-                    if (rand == 1 && tiles[i][j].getName().equals("sand1")) {
+                    int rand = (int) (Math.random() * 75) + 1;
+                    if ((rand == 1 || rand == 3) && tiles[i][j].getName().equals("sand1")) {
                         tiles[i][j] = suspiciousSand;
                     } else if (rand == 2 && tiles[i][j].getName().equals("sand1")) {
                         tiles[i][j] = palmTree;

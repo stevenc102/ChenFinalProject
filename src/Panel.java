@@ -1,3 +1,4 @@
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -40,7 +41,7 @@ public class Panel extends JPanel implements Runnable {
     }
 
     public void run() {
-        while(gameThread != null && !player.getGameEnd()) {
+        while(gameThread != null) {
             repaint();
             try {
                 player.update();
@@ -55,7 +56,9 @@ public class Panel extends JPanel implements Runnable {
         Graphics2D g2 = (Graphics2D) g;
         this.setBackground(Color.WHITE);
         try {
-            tileManager.draw(g2);
+            if (!player.isGameEnd()) {
+                tileManager.draw(g2);
+            }
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -64,6 +67,16 @@ public class Panel extends JPanel implements Runnable {
             player.draw(g2);
         } catch (IOException e) {
             throw new RuntimeException(e);
+        }
+        if (player.isGameEnd()) {
+            if (player.getScore() < 5000 && player.getLogs() >= 16) {
+                System.out.println("hi guys");
+                try {
+                    g2.drawImage(ImageIO.read(getClass().getResourceAsStream("/Text/Student_Loans.png")),0 , 0, 768 , 750, null);
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+            }
         }
         g2.dispose();
     }

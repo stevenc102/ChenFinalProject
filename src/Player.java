@@ -35,12 +35,13 @@ public class Player implements KeyListener, ActionListener {
     private boolean gameEnd;
     private boolean gameBegun;
     public Player()  {
+        logs = 16;
         gameBegun = false;
         gameEnd = false;
         mostRecent = 0;
         gotItem = false;
         score = 0;
-        seconds = 100;
+        seconds = 5;
         showStats = false;
         time = new Timer(1000, null);
         time.addActionListener(this);
@@ -103,6 +104,15 @@ public class Player implements KeyListener, ActionListener {
     }
     public void changeXPos(double a) {
         worldXPos += a;
+    }
+    public boolean isGameEnd() {
+        return gameEnd;
+    }
+    public int getScore() {
+        return score;
+    }
+    public int getLogs() {
+        return logs;
     }
 
     public void getPlayerImage() throws IOException {
@@ -281,7 +291,7 @@ public class Player implements KeyListener, ActionListener {
         }
 
 
-        if (upPressed || downPressed || rightPressed || leftPressed && gameBegun) {
+        if (upPressed || downPressed || rightPressed || leftPressed && gameBegun && !gameEnd) {
             isColliding = false;
             cm.checkCollision(this);
             if (!isColliding) {
@@ -360,8 +370,8 @@ public class Player implements KeyListener, ActionListener {
 
     public void draw(Graphics2D g2) throws IOException {
         if (!gameBegun) {
-            g2.drawImage(ImageIO.read(getClass().getResourceAsStream("/Sprites/TitleScreen.png")), 0, 0, 768,750, null);
-        } else {
+            g2.drawImage(ImageIO.read(getClass().getResourceAsStream("/Text/TitleScreen.png")), 0, 0, 768,750, null);
+        } else if (!gameEnd) {
             BufferedImage image = getImage();
             g2.drawImage(image, screenX, screenY, 48, 48, null);
             if (showStats) {
