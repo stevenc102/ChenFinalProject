@@ -25,7 +25,7 @@ public class Panel extends JPanel implements Runnable {
         tileManager = new TileManager();
         player = new Player();
         this.setPreferredSize(new Dimension(SCREEN_WIDTH, SCREEN_LENGTH));
-        this.setBackground(Color.WHITE);
+        this.setBackground(Color.BLUE);
         this.setDoubleBuffered(true);
         this.addKeyListener(player);
 
@@ -40,13 +40,14 @@ public class Panel extends JPanel implements Runnable {
     }
 
     public void run() {
-        while(gameThread != null) {
+        while(gameThread != null && !player.getGameEnd()) {
             repaint();
             try {
                 player.update();
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
+
         }
     }
     public void paintComponent(Graphics g) {

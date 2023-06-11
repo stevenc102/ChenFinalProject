@@ -32,14 +32,13 @@ public class Player implements KeyListener, ActionListener {
     private int score;
     private boolean gotItem;
     private int mostRecent;
-    private boolean first;
-    private int begin;
+    private boolean gameEnd;
     public Player()  {
-        first = true;
+        gameEnd = false;
         mostRecent = 0;
         gotItem = false;
         score = 0;
-        seconds = 15;
+        seconds = 60;
         showStats = false;
         time = new Timer(1000, null);
         time.addActionListener(this);
@@ -75,6 +74,9 @@ public class Player implements KeyListener, ActionListener {
     }
     public int getPlayerSpeed() {
         return playerSpeed;
+    }
+    public boolean getGameEnd() {
+        return gameEnd;
     }
 
     public String getDirection() {
@@ -180,16 +182,16 @@ public class Player implements KeyListener, ActionListener {
     @Override
     public void keyPressed(KeyEvent e) {
         int temp = e.getKeyCode();
-        if (temp == KeyEvent.VK_W || temp == KeyEvent.VK_UP) {
+        if (temp == KeyEvent.VK_W || temp == KeyEvent.VK_UP && !showStats) {
             upPressed = true;
             direction = "up";
-        } else if (temp == KeyEvent.VK_A || temp == KeyEvent.VK_LEFT) {
+        } else if (temp == KeyEvent.VK_A || temp == KeyEvent.VK_LEFT&& !showStats) {
             leftPressed = true;
             direction = "left";
-        } else if (temp == KeyEvent.VK_S || temp == KeyEvent.VK_DOWN) {
+        } else if (temp == KeyEvent.VK_S || temp == KeyEvent.VK_DOWN&& !showStats) {
             downPressed = true;
             direction = "down";
-        } else if (temp == KeyEvent.VK_D || temp == KeyEvent.VK_RIGHT) {
+        } else if (temp == KeyEvent.VK_D || temp == KeyEvent.VK_RIGHT&& !showStats) {
             rightPressed = true;
             direction = "right";
         }
@@ -269,7 +271,7 @@ public class Player implements KeyListener, ActionListener {
             isColliding = false;
             cm.checkCollision(this);
             if (!isColliding) {
-                if (upPressed && !leftPressed && !downPressed && !rightPressed) {
+                if (upPressed && !leftPressed && !downPressed && !rightPressed&& !showStats) {
                         changeYPos(-1 * getPlayerSpeed());
                         moving = true;
                     try {
@@ -277,7 +279,7 @@ public class Player implements KeyListener, ActionListener {
                     } catch (InterruptedException e) {
                         throw new RuntimeException(e);
                     }
-                } else if (!upPressed && leftPressed && !downPressed && !rightPressed) {
+                } else if (!upPressed && leftPressed && !downPressed && !rightPressed&& !showStats) {
                         changeXPos(-1 * getPlayerSpeed());
                         moving = true;
                     try {
@@ -285,7 +287,7 @@ public class Player implements KeyListener, ActionListener {
                     } catch (InterruptedException e) {
                         throw new RuntimeException(e);
                     }
-                } else if (!upPressed && !leftPressed && downPressed && !rightPressed) {
+                } else if (!upPressed && !leftPressed && downPressed && !rightPressed && !showStats) {
                         changeYPos(getPlayerSpeed());
                         moving = true;
                     try {
@@ -293,7 +295,7 @@ public class Player implements KeyListener, ActionListener {
                     } catch (InterruptedException e) {
                         throw new RuntimeException(e);
                     }
-                } else if (!upPressed && !leftPressed && !downPressed && rightPressed) {
+                } else if (!upPressed && !leftPressed && !downPressed && rightPressed&& !showStats) {
                         changeXPos(getPlayerSpeed());
                         moving = true;
                     try {
@@ -418,6 +420,9 @@ public class Player implements KeyListener, ActionListener {
     }
     public void actionPerformed(ActionEvent e) {
         Object o = e.getSource();
+        if(seconds == 0) {
+            gameEnd = true;
+        }
         if (o instanceof Timer && seconds > 0) {
             seconds--;
         }
