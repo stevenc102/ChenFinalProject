@@ -65,7 +65,6 @@ public class Panel extends JPanel implements Runnable {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        g2.draw(player.getHitBox());
         g2.dispose();
     }
 

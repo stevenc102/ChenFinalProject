@@ -10,7 +10,7 @@ public class TileManager {
     public static Tile[][] tiles;
     public static int[][] map =  new int[48][48];
     private Tile sand1, sand2, sandRock, water, palmTree, waterCornerIn, waterCornerInFlipped, waterCornerOut, waterCornerOutFlipped, waterCornerConnect, waterCornerConnectFlipped, waterFlat, waterFlatFlipped,
-                 waterFlat2, waterFlat2Flipped, suspiciousSand, axeTile, shovelTile, cutTree;
+                 waterFlat2, waterFlat2Flipped, suspiciousSand, axeTile, shovelTile, cutTree, waterFlatTop, waterFlat2Left, waterFlatLeft, cornerBottomLeft, cornerTopLeft, waterFlat2Top, cornerBottomRight, cornerTopRight, waterFlat2Right;
 
     public TileManager() throws IOException {
         initMap();
@@ -34,6 +34,15 @@ public class TileManager {
         axeTile = new Tile("axe",ImageIO.read(getClass().getResourceAsStream("/Terrain/Tile_Axe.png")), false, 0, 0);
         shovelTile = new Tile("shovel",ImageIO.read(getClass().getResourceAsStream("/Terrain/Tile_Shovel.png")), false, 0, 0);
         cutTree = new Tile("cutTree",ImageIO.read(getClass().getResourceAsStream("/Terrain/Cut_Tree.png")), true, 0, 0);
+        waterFlatTop = new Tile("waterFlatTop",ImageIO.read(getClass().getResourceAsStream("/Terrain/Water_Flat_Top.png")), true, 0, 0);
+        waterFlat2Left = new Tile("waterFlat2Left",ImageIO.read(getClass().getResourceAsStream("/Terrain/Water_Flat2_Left.png")), true, 0, 0);
+        waterFlatLeft = new Tile("waterFlatLeft",ImageIO.read(getClass().getResourceAsStream("/Terrain/Water_Flat_Left.png")), true, 0, 0);
+        cornerBottomLeft = new Tile("cornerBottomLeft",ImageIO.read(getClass().getResourceAsStream("/Terrain/Corner_Bottom_Left.png")), true, 0, 0);
+        cornerTopLeft = new Tile("cornerTopLeft",ImageIO.read(getClass().getResourceAsStream("/Terrain/Corner_Top_Left.png")), true, 0, 0);
+        waterFlat2Top = new Tile("waterFlat2Top",ImageIO.read(getClass().getResourceAsStream("/Terrain/Water_Flat2_Top.png")), true, 0, 0);
+        cornerBottomRight = new Tile("cornerBottomRight",ImageIO.read(getClass().getResourceAsStream("/Terrain/Corner_Bottom_Right.png")), true, 0, 0);
+        cornerTopRight = new Tile("cornerTopRight",ImageIO.read(getClass().getResourceAsStream("/Terrain/Corner_Top_Right.png")), true, 0, 0);
+        waterFlat2Right = new Tile("waterFlat2Right",ImageIO.read(getClass().getResourceAsStream("/Terrain/Water_Flat2_Right.png")), true, 0, 0);
         initTiles();
     }
 
@@ -63,6 +72,7 @@ public class TileManager {
     }
 
     public void initTiles() {
+        int palmTrees = 0;
         for (int i = 0; i < Panel.MAX_WORLD_ROW; i++) {
             for (int j = 0; j < Panel.MAX_WORLD_COL; j++) {
                 if (map[i][j] == 0) {
@@ -75,6 +85,7 @@ public class TileManager {
                     tiles[i][j] = water;
                 } else if (map[i][j] == 4) {
                     tiles[i][j] = palmTree;
+                    palmTrees++;
                 } else if (map[i][j] == 5){
                     tiles[i][j] = waterCornerIn;
                 } else if (map[i][j] == 6){
@@ -103,16 +114,37 @@ public class TileManager {
                     tiles[i][j] = shovelTile;
                 } else if (map[i][j] == 18) {
                     tiles[i][j] = cutTree;
+                } else if (map[i][j] == 19) {
+                    tiles[i][j] = waterFlatTop;
+                } else if (map[i][j] == 20) {
+                    tiles[i][j] = waterFlat2Left;
+                } else if (map[i][j] == 21) {
+                    tiles[i][j] = waterFlatLeft;
+                }else if (map[i][j] == 22) {
+                    tiles[i][j] = cornerBottomLeft;
+                }else if (map[i][j] == 23) {
+                    tiles[i][j] = cornerTopLeft;
+                }else if (map[i][j] == 24) {
+                    tiles[i][j] = waterFlat2Top;
+                }else if (map[i][j] == 25) {
+                    tiles[i][j] = cornerTopRight;
+                }else if (map[i][j] == 26) {
+                    tiles[i][j] = cornerBottomRight;
+                } else if (map[i][j] == 27) {
+                    tiles[i][j] = waterFlat2Right;
                 }
             }
         }
-        for (int i = 0; i < tiles.length; i++) {
-            for (int j = 0; j < tiles[i].length; j++) {
-                int rand = (int)(Math.random() * 99) + 1;
-                if (rand == 1 &&tiles[i][j].getName().equals("sand1")) {
-                    tiles[i][j] = suspiciousSand;
-                } else if (rand == 2&& tiles[i][j].getName().equals("sand1")){
-                    tiles[i][j] = palmTree;
+        while(palmTrees < 16) {
+            for (int i = 0; i < tiles.length; i++) {
+                for (int j = 0; j < tiles[i].length; j++) {
+                    int rand = (int) (Math.random() * 99) + 1;
+                    if (rand == 1 && tiles[i][j].getName().equals("sand1")) {
+                        tiles[i][j] = suspiciousSand;
+                    } else if (rand == 2 && tiles[i][j].getName().equals("sand1")) {
+                        tiles[i][j] = palmTree;
+                        palmTrees++;
+                    }
                 }
             }
         }
