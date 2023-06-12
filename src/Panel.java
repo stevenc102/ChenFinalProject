@@ -70,9 +70,14 @@ public class Panel extends JPanel implements Runnable {
         }
         if (player.isGameEnd()) {
             if (player.getScore() < 5000 && player.getLogs() >= 16) {
-                System.out.println("hi guys");
                 try {
-                    g2.drawImage(ImageIO.read(getClass().getResourceAsStream("/Text/Student_Loans.png")),0 , 0, 768 , 750, null);
+                    g2.drawImage(ImageIO.read(getClass().getResourceAsStream("/Text/StudentLoans.png")),0 , 0, 768 , 750, null);
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+            } else if(player.getScore() >= 5000 && player.getLogs() >= 16) {
+                try {
+                    g2.drawImage(ImageIO.read(getClass().getResourceAsStream("/Text/Victory.png")),0 , 0, 768 , 750, null);
                 } catch (IOException e) {
                     throw new RuntimeException(e);
                 }
