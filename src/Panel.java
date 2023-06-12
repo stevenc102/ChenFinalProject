@@ -81,6 +81,12 @@ public class Panel extends JPanel implements Runnable {
                 } catch (IOException e) {
                     throw new RuntimeException(e);
                 }
+            } else {
+                try {
+                    g2.drawImage(ImageIO.read(getClass().getResourceAsStream("/Text/BadEnding.png")),0 , 0, 768 , 750, null);
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
             }
         }
         g2.dispose();

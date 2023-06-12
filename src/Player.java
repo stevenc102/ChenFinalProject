@@ -40,7 +40,7 @@ public class Player implements KeyListener, ActionListener {
         mostRecent = 0;
         gotItem = false;
         score = 0;
-        seconds = 100;
+        seconds = 5;
         showStats = false;
         time = new Timer(1000, null);
         time.addActionListener(this);

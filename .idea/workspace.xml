@@ -5,12 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d6512a21-4ed6-4d58-b895-09efb0bec7b8" name="Changes" comment="yippeee">
-      <change afterPath="$PROJECT_DIR$/src/Text/StudentLoans.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Text/Victory.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Panel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Panel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Text/Student_Loans.png" beforeDir="false" />
     </list>
     <list id="324576a1-374b-4300-b3c1-864135a3528e" name="Changes by student" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -145,7 +141,14 @@
       <option name="project" value="LOCAL" />
       <updated>1686515349680</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="yippeee">
+      <created>1686528351385</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1686528351385</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
